@@ -2,47 +2,38 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <section className="bg-[#1a1a2e] text-white">
-      <div className="container-main py-12 md:py-16">
-        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-8">
+    <section className="bg-[#1a1a2e] text-white overflow-hidden">
+      <div className="container-main">
+        <div className="flex flex-col md:flex-row items-center md:items-end">
 
           {/* ── LEFT COLUMN ── */}
-          <div className="flex-1 order-2 md:order-1">
-            <p className="font-display text-2xl md:text-3xl font-extrabold mb-2">
+          <div className="flex-1 pt-14 pb-14 md:pb-16 order-2 md:order-1 pr-0 md:pr-8">
+            <p className="text-[22px] md:text-2xl font-bold text-white leading-tight mb-2">
               iMD App
             </p>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-[44px] font-extrabold leading-tight">
+            <h1 className="text-[32px] md:text-[38px] lg:text-[44px] font-bold text-white leading-[1.15]">
               Your Ultimate Medical Life
-              <br className="hidden md:block" /> Companion &amp; Learning Hub
+              <br />
+              Companion &amp; Learning Hub
             </h1>
-            <p className="text-base md:text-[15px] text-gray-300 mt-5 max-w-xl leading-relaxed">
-              The only Biggest Medical Resources&apos; hub on Earth with more than
-              45,000 Medical and Pharmaceutical Resources &amp; Databases now
-              available globally to our valued subscribers.
+            <p className="text-[14px] md:text-[15px] text-gray-300 mt-5 max-w-[420px] leading-[1.75]">
+              The only Biggest Medical Resources&apos; hub on Earth with more
+              than 45,000 Medical and Pharmaceutical Resources &amp; Databases
+              now available globally to our valued subscribers.
             </p>
           </div>
 
           {/* ── RIGHT COLUMN ── */}
-          <div className="flex-1 flex justify-center w-full order-1 md:order-2">
-            <div className="relative w-full max-w-[420px]">
-              {/* Green organic blob */}
-              <div
-                className="absolute inset-0 -z-0 bg-[#bfe2a8] opacity-90"
-                style={{
-                  borderRadius: '60% 40% 55% 45% / 50% 60% 40% 50%',
-                  transform: 'rotate(8deg) scale(0.95)',
-                }}
-                aria-hidden="true"
-              />
-              <Image
-                src="/woman.webp"
-                alt="Smiling medical professional in scrubs"
-                width={480}
-                height={520}
-                priority
-                className="relative z-10 w-full h-auto object-contain"
-              />
-            </div>
+          {/* Image is flush to the right, extends to bottom edge, no padding below */}
+          <div className="w-full md:w-auto md:flex-none flex justify-center md:justify-end order-1 md:order-2 pt-10 md:pt-0">
+            <Image
+              src="/woman.webp"
+              alt="Smiling medical professional with crossed fingers"
+              width={480}
+              height={500}
+              priority
+              className="w-[260px] sm:w-[320px] md:w-[380px] lg:w-[440px] h-auto object-contain object-bottom"
+            />
           </div>
 
         </div>

@@ -18,39 +18,38 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-[#1a1a2e]">
-      {/* Main bar */}
-      <div className="container-main flex items-center justify-between h-[72px] md:h-20">
+      <div className="container-main flex items-center justify-between h-[80px] md:h-[90px]">
 
         {/* Logo + Stethoscope + Site Name */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src="/logo.webp"
-            alt="iMD Medical Resources logo"
-            width={54}
-            height={54}
-            className="rounded-full object-cover"
+            alt="iMD Medical Resources"
+            width={64}
+            height={64}
+            className="rounded-full object-cover shrink-0"
             priority
           />
           <Image
             src="/stethoscope.webp"
             alt=""
-            width={50}
-            height={50}
-            className="hidden sm:block opacity-90"
+            width={56}
+            height={56}
+            className="hidden sm:block shrink-0 opacity-90"
             aria-hidden="true"
           />
-          <span className="text-white font-semibold text-sm md:text-base leading-tight">
+          <span className="text-white font-semibold text-base md:text-[17px] leading-snug ml-1">
             iMD Medical Resources
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-5 lg:gap-7">
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs lg:text-sm text-white/90 hover:text-white transition-colors whitespace-nowrap"
+              className="text-[13px] lg:text-sm font-medium text-white hover:text-blue-300 transition-colors whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -69,7 +68,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       <div
-        className={`md:hidden bg-[#1a1a2e] border-t border-white/10 overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`md:hidden bg-[#1a1a2e] border-t border-white/10 overflow-hidden transition-all duration-300 ${
           mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
