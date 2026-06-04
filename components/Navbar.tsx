@@ -18,37 +18,39 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-[#1a1a2e]">
-      <div className="container-main flex items-center justify-between h-16">
+      {/* Main bar */}
+      <div className="container-main flex items-center justify-between h-[72px] md:h-20">
+
         {/* Logo + Stethoscope + Site Name */}
-        <Link href="/" className="flex items-center gap-2 shrink-0">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
           <Image
             src="/logo.webp"
             alt="iMD Medical Resources logo"
-            width={42}
-            height={42}
+            width={54}
+            height={54}
             className="rounded-full object-cover"
             priority
           />
           <Image
             src="/stethoscope.webp"
             alt=""
-            width={40}
-            height={40}
+            width={50}
+            height={50}
             className="hidden sm:block opacity-90"
             aria-hidden="true"
           />
-          <span className="text-white font-medium text-sm md:text-base ml-1 whitespace-nowrap">
+          <span className="text-white font-semibold text-sm md:text-base leading-tight">
             iMD Medical Resources
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-xs lg:text-sm text-white/90 hover:text-white transition-colors"
+              className="text-xs lg:text-sm text-white/90 hover:text-white transition-colors whitespace-nowrap"
             >
               {link.label}
             </Link>
@@ -61,7 +63,7 @@ export default function Navbar() {
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -71,13 +73,13 @@ export default function Navbar() {
           mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <nav className="flex flex-col pb-3">
+        <nav className="flex flex-col pb-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-sm text-white/90 hover:text-white hover:bg-white/5 transition-colors py-3 px-6"
+              className="text-sm text-white/90 hover:text-white hover:bg-white/5 transition-colors py-3.5 px-6 border-b border-white/5 last:border-0"
             >
               {link.label}
             </Link>
