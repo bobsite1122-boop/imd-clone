@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Send, Mail } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import InstantAnchorLink from '@/components/InstantAnchorLink'
 
 const usefulLinks = [
@@ -29,6 +29,14 @@ function InstagramIcon() {
   )
 }
 
+function XIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
+
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
@@ -47,7 +55,7 @@ function FacebookIcon() {
 
 const socials = [
   { label: 'YouTube', href: 'https://www.youtube.com/@iMDSubscriptions', Icon: YouTubeIcon, bg: 'bg-[#ff0000]' },
-  { label: 'Telegram', href: 'https://t.me/iMDAppSubscriptions', Icon: () => <Send size={18} aria-hidden="true" />, bg: 'bg-[#2aabee]' },
+  { label: 'X', href: 'https://x.com/iMDApp', Icon: () => <XIcon size={16} />, bg: 'bg-black' },
   { label: 'Instagram', href: '#', Icon: InstagramIcon, bg: 'bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]' },
   { label: 'WhatsApp', href: 'https://wa.me/923352220382', Icon: () => <WhatsAppIcon size={18} />, bg: 'bg-[#25d366]' },
   { label: 'Facebook', href: '#', Icon: FacebookIcon, bg: 'bg-[#1877f2]' },
@@ -55,7 +63,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#122060] pt-10 pb-8 text-white">
+    <footer className="bg-[#0e3b77] pt-10 pb-8 text-white">
       <div className="container-main">
 
         {/* ── Top section: Brand + 2 cols on tablet/desktop, stacked on mobile ── */}
@@ -68,7 +76,7 @@ export default function Footer() {
               alt="iMD Medical Resources"
               width={96}
               height={96}
-              className="rounded-full object-cover w-14 h-14 sm:w-16 sm:h-16 ring-2 ring-white/10"
+              className="rounded-full object-cover bg-white w-14 h-14 sm:w-16 sm:h-16"
             />
             <h3 className="text-white font-bold text-base mt-3">
               iMD Medical Resources
@@ -137,16 +145,16 @@ export default function Footer() {
           {/* Stacks on mobile, side-by-side from sm+ */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
 
-            {/* Telegram */}
+            {/* X */}
             <a
-              href="https://t.me/iMDrahmat"
+              href="https://x.com/iMDApp"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2aabee] hover:bg-[#229ed9] text-white rounded-[2rem] w-[170px] sm:w-[160px] min-h-[88px] flex flex-col items-center justify-center gap-1.5 transition-colors"
+              className="bg-black hover:bg-neutral-800 text-white rounded-[2rem] w-[170px] sm:w-[160px] min-h-[88px] flex flex-col items-center justify-center gap-1.5 transition-colors"
             >
-              <Send size={22} aria-hidden="true" />
+              <XIcon size={22} />
               <span className="text-[12px] font-medium leading-tight text-center">
-                Message on<br />Telegram
+                Message on<br />X
               </span>
             </a>
 

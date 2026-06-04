@@ -1,8 +1,4 @@
-'use client'
-
-import { useState } from 'react'
-
-const WHATSAPP_URL = 'https://wa.me/923352220382'
+import Link from 'next/link'
 
 function WhatsAppGlyph({ size = 28 }: { size?: number }) {
   return (
@@ -19,31 +15,20 @@ function WhatsAppGlyph({ size = 28 }: { size?: number }) {
 }
 
 export default function WhatsAppFloat() {
-  const [tooltipOpen, setTooltipOpen] = useState(true)
-
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex items-center gap-3">
-      {tooltipOpen && (
-        <div className="hidden sm:flex items-center bg-white text-slate-800 text-[12px] font-medium px-3.5 py-2 rounded-full shadow-md whitespace-nowrap">
-          Need Help? Chat with us
-          <button
-            onClick={() => setTooltipOpen(false)}
-            aria-label="Dismiss"
-            className="ml-2 text-slate-400 hover:text-slate-600 text-base leading-none"
-          >
-            ×
-          </button>
-        </div>
-      )}
-      <a
-        href={WHATSAPP_URL}
+    <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2">
+      <span className="hidden sm:inline-flex items-center bg-white text-slate-800 text-xs font-medium rounded-full px-3 py-1.5 shadow-lg">
+        Need Help? Chat with us
+      </span>
+      <Link
+        href="https://wa.me/923352220382"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with us on WhatsApp"
-        className="bg-[#25d366] hover:bg-[#1ebe5d] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors"
+        aria-label="Chat on WhatsApp"
+        className="bg-[#25d366] hover:bg-[#1ebe5d] text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-xl transition-colors"
       >
-        <WhatsAppGlyph size={28} />
-      </a>
+        <WhatsAppGlyph size={26} />
+      </Link>
     </div>
   )
 }

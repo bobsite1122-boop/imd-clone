@@ -17,64 +17,65 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0e3b77] shadow-sm">
-      <div className="container-main flex items-center justify-between h-[150px] md:h-[170px] gap-4">
+    <header className="sticky top-0 z-50 bg-[#0e3b77]">
+      <div className="container-main flex items-center justify-between h-[64px] md:h-[76px]">
 
-        {/* Brand: logo + name */}
+        {/* Brand: logo + site name */}
         <Link
           href="/"
-          className="flex items-center gap-3 md:gap-4 shrink-0 min-w-0"
+          className="flex items-center gap-2.5 sm:gap-3 shrink-0 min-w-0"
         >
           <Image
             src="/logo.png"
             alt="iMD Medical Resources"
-            width={128}
-            height={128}
+            width={96}
+            height={96}
             priority
-            className="rounded-full object-cover shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 ring-2 ring-white/10"
+            className="rounded-full object-cover shrink-0 w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 bg-white"
           />
-          <span className="text-white font-semibold text-base sm:text-lg md:text-[19px] leading-tight tracking-tight truncate">
+          <span className="text-white font-semibold text-[13px] sm:text-sm md:text-[15px] leading-tight truncate">
             iMD Medical Resources
           </span>
         </Link>
 
-        {/* Desktop nav (right-aligned) */}
-        <nav className="hidden md:flex items-center gap-5 lg:gap-7 shrink-0">
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-[13px] lg:text-sm font-medium text-white/90 hover:text-white transition-colors whitespace-nowrap"
+              className="text-[13px] xl:text-sm font-medium text-white/90 hover:text-white transition-colors whitespace-nowrap"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Mobile hamburger */}
+        {/* Mobile / tablet hamburger */}
         <button
-          className="md:hidden text-white p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
-          onClick={() => setMobileOpen((prev) => !prev)}
+          type="button"
+          onClick={() => setMobileOpen((p) => !p)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
+          className="lg:hidden text-white p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
         >
-          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile / tablet dropdown */}
       <div
-        className={`md:hidden bg-[#0e3b77] border-t border-white/10 overflow-hidden transition-all duration-300 ${
-          mobileOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+        className={`lg:hidden bg-[#0e3b77] border-t border-white/10 overflow-hidden transition-all duration-300 ${
+          mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <nav className="flex flex-col pb-4">
+        <nav className="flex flex-col pb-3">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-sm text-white/90 hover:text-white hover:bg-white/5 transition-colors py-3.5 px-6 border-b border-white/5 last:border-0"
+              className="text-sm text-white/90 hover:text-white hover:bg-white/5 transition-colors py-3 px-6 border-b border-white/5 last:border-0"
             >
               {link.label}
             </Link>
