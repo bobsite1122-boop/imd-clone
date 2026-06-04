@@ -17,17 +17,17 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-[#1a1a2e]">
+    <header className="sticky top-0 z-50 bg-[#0e3b77]">
       <div className="container-main flex items-center justify-between h-[80px] md:h-[90px]">
 
         {/* Logo + Stethoscope + Site Name */}
-        <Link href="/" className="flex items-center gap-3 shrink-0">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
           <Image
             src="/logo.webp"
             alt="iMD Medical Resources"
             width={64}
             height={64}
-            className="rounded-full object-cover shrink-0"
+            className="rounded-full object-cover shrink-0 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16"
             priority
           />
           <Image
@@ -35,10 +35,10 @@ export default function Navbar() {
             alt=""
             width={56}
             height={56}
-            className="hidden sm:block shrink-0 opacity-90"
+            className="hidden md:block shrink-0 opacity-90 w-12 h-12"
             aria-hidden="true"
           />
-          <span className="text-white font-semibold text-base md:text-[17px] leading-snug ml-1">
+          <span className="text-white font-semibold text-sm sm:text-base md:text-[17px] leading-snug truncate">
             iMD Medical Resources
           </span>
         </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       <div
-        className={`md:hidden bg-[#1a1a2e] border-t border-white/10 overflow-hidden transition-all duration-300 ${
+        className={`md:hidden bg-[#0e3b77] border-t border-white/10 overflow-hidden transition-all duration-300 ${
           mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >

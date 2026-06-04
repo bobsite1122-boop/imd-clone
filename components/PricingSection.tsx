@@ -42,7 +42,7 @@ const plans: Plan[] = [
   },
 ]
 
-const NAVY = '#1a2a5e'
+const NAVY = '#0d1b3e'
 
 const buildFeatures = (days: string) => [
   `Full Access For ${days}`,
@@ -54,32 +54,35 @@ const buildFeatures = (days: string) => [
 
 export default function PricingSection() {
   return (
-    <section id="subscribenow" className="bg-gray-200 py-16 md:py-20">
-      <div className="container-main">
+    <section id="subscribenow" className="bg-[#e8ecf2] py-14 md:py-20">
+      <div className="container-main max-w-5xl">
 
         {/* Heading */}
         <div className="text-center mb-10">
           <h2
-            className="font-display font-black text-2xl md:text-3xl tracking-tight uppercase max-w-2xl mx-auto"
+            className="font-display font-black text-2xl md:text-[1.7rem] leading-tight tracking-wide uppercase"
             style={{ color: '#0b1530' }}
           >
-            Choose Your iMD App Subscription Plan
+            Choose Your iMD App<br />Subscription Plan
           </h2>
-          <div className="mx-auto mt-4 h-px w-72 max-w-full bg-slate-700/60" />
+          <div
+            className="mx-auto mt-3 h-px w-64 max-w-full"
+            style={{ backgroundColor: '#0b1530', opacity: 0.5 }}
+          />
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {plans.map((plan) => {
             const features = buildFeatures(plan.days)
             return (
               <article
                 key={plan.id}
-                className="bg-gray-50 border border-gray-200 rounded-md p-6 flex flex-col"
+                className="bg-white border border-gray-200 rounded-sm p-5 flex flex-col w-full max-w-sm mx-auto md:max-w-none"
               >
                 {/* Plan name */}
                 <h3
-                  className="text-sm md:text-base font-bold text-center mb-3"
+                  className="text-xs md:text-sm font-semibold text-center mb-2 tracking-wide"
                   style={{ color: NAVY }}
                 >
                   {plan.name}
@@ -87,23 +90,24 @@ export default function PricingSection() {
 
                 {/* Price */}
                 <p
-                  className="text-center font-display font-extrabold text-5xl mb-5"
+                  className="text-center font-display font-black text-[2.8rem] sm:text-[3.2rem] md:text-[3.5rem] leading-none mb-5"
                   style={{ color: NAVY }}
                 >
                   {plan.price}
                 </p>
 
                 {/* Features */}
-                <ul className="divide-y divide-gray-200 border-t border-b border-gray-200 mb-6">
+                <ul className="mb-6 flex-1">
                   {features.map((feature) => (
                     <li
                       key={feature}
-                      className="flex items-center gap-2 py-3 text-[13px] text-gray-600"
+                      className="flex items-center gap-2 py-2 text-[12.5px] text-gray-700 border-b border-gray-100 last:border-b-0"
                     >
                       <Check
-                        size={16}
-                        className="text-gray-700 shrink-0"
-                        strokeWidth={2.5}
+                        size={14}
+                        strokeWidth={3}
+                        className="shrink-0"
+                        style={{ color: NAVY }}
                         aria-hidden="true"
                       />
                       <span>{feature}</span>
@@ -112,12 +116,12 @@ export default function PricingSection() {
                 </ul>
 
                 {/* Buttons */}
-                <div className="flex flex-col gap-3 mt-auto">
+                <div className="flex flex-col gap-2.5 mt-auto">
                   <a
                     href={plan.subscribeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white font-semibold py-3 rounded-md text-center text-sm uppercase tracking-wide hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
+                    className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
                     style={{ backgroundColor: NAVY }}
                   >
                     Subscribe Now
@@ -126,7 +130,7 @@ export default function PricingSection() {
                     href={plan.extendLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white font-semibold py-3 rounded-md text-center text-sm uppercase tracking-wide hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
+                    className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
                     style={{ backgroundColor: NAVY }}
                   >
                     Extend Now
