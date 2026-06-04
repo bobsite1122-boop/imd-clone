@@ -59,15 +59,27 @@ export default function PricingSection() {
 
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2
-            className="font-display font-black text-2xl md:text-[1.7rem] leading-tight tracking-wide uppercase"
-            style={{ color: '#0b1530' }}
-          >
-            Choose Your iMD App<br />Subscription Plan
-          </h2>
+          <div className="inline-flex items-center gap-4 max-w-full">
+            <span
+              className="hidden sm:block h-px w-16 md:w-24"
+              style={{ backgroundColor: '#0b1530', opacity: 0.6 }}
+              aria-hidden="true"
+            />
+            <h2
+              className="font-display font-black text-xl sm:text-2xl md:text-[1.7rem] leading-tight tracking-wide uppercase"
+              style={{ color: '#0b1530' }}
+            >
+              Choose Your iMD App<br />Subscription Plan
+            </h2>
+            <span
+              className="hidden sm:block h-px w-16 md:w-24"
+              style={{ backgroundColor: '#0b1530', opacity: 0.6 }}
+              aria-hidden="true"
+            />
+          </div>
           <div
-            className="mx-auto mt-3 h-px w-64 max-w-full"
-            style={{ backgroundColor: '#0b1530', opacity: 0.5 }}
+            className="mx-auto mt-3 h-px w-48 sm:w-72 max-w-full"
+            style={{ backgroundColor: '#0b1530', opacity: 0.35 }}
           />
         </div>
 
@@ -121,7 +133,7 @@ export default function PricingSection() {
                     href={plan.subscribeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
+                    className="text-white font-bold py-3 rounded-full text-center text-[11px] uppercase tracking-[0.15em] hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
                     style={{ backgroundColor: NAVY }}
                   >
                     Subscribe Now
@@ -130,7 +142,7 @@ export default function PricingSection() {
                     href={plan.extendLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
+                    className="text-white font-bold py-3 rounded-full text-center text-[11px] uppercase tracking-[0.15em] hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
                     style={{ backgroundColor: NAVY }}
                   >
                     Extend Now

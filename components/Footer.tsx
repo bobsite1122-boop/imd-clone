@@ -64,11 +64,11 @@ export default function Footer() {
           {/* Col 1 — Brand */}
           <div className="sm:col-span-2 md:col-span-1">
             <Image
-              src="/logo.webp"
+              src="/logo.png"
               alt="iMD Medical Resources"
-              width={72}
-              height={72}
-              className="rounded-full object-cover w-14 h-14 sm:w-16 sm:h-16"
+              width={96}
+              height={96}
+              className="rounded-full object-cover w-14 h-14 sm:w-16 sm:h-16 ring-2 ring-white/10"
             />
             <h3 className="text-white font-bold text-base mt-3">
               iMD Medical Resources

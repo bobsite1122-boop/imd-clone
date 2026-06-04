@@ -17,59 +17,55 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0e3b77]">
-      <div className="container-main flex items-center justify-between h-[80px] md:h-[90px]">
+    <header className="sticky top-0 z-50 bg-[#0e3b77] shadow-sm">
+      <div className="container-main flex items-center justify-between h-[150px] md:h-[170px] gap-4">
 
-        {/* Logo + Stethoscope + Site Name */}
-        <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0">
+        {/* Brand: logo + name */}
+        <Link
+          href="/"
+          className="flex items-center gap-3 md:gap-4 shrink-0 min-w-0"
+        >
           <Image
-            src="/logo.webp"
+            src="/logo.png"
             alt="iMD Medical Resources"
-            width={64}
-            height={64}
-            className="rounded-full object-cover shrink-0 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16"
+            width={128}
+            height={128}
             priority
+            className="rounded-full object-cover shrink-0 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 ring-2 ring-white/10"
           />
-          <Image
-            src="/stethoscope.webp"
-            alt=""
-            width={56}
-            height={56}
-            className="hidden md:block shrink-0 opacity-90 w-12 h-12"
-            aria-hidden="true"
-          />
-          <span className="text-white font-semibold text-sm sm:text-base md:text-[17px] leading-snug truncate">
+          <span className="text-white font-semibold text-base sm:text-lg md:text-[19px] leading-tight tracking-tight truncate">
             iMD Medical Resources
           </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+        {/* Desktop nav (right-aligned) */}
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7 shrink-0">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-[13px] lg:text-sm font-medium text-white hover:text-blue-300 transition-colors whitespace-nowrap"
+              className="text-[13px] lg:text-sm font-medium text-white/90 hover:text-white transition-colors whitespace-nowrap"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile hamburger */}
         <button
           className="md:hidden text-white p-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
           onClick={() => setMobileOpen((prev) => !prev)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {/* Mobile Dropdown */}
+      {/* Mobile dropdown */}
       <div
         className={`md:hidden bg-[#0e3b77] border-t border-white/10 overflow-hidden transition-all duration-300 ${
-          mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          mobileOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
         <nav className="flex flex-col pb-4">

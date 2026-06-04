@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Sora } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import WhatsAppFloat from '@/components/WhatsAppFloat'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   )
