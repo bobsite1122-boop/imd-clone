@@ -13,7 +13,7 @@ const APK_URL = 'https://sg.imedicaldoctor.net/imd192.apk'
 // when they change on https://imdresources.com/install/.
 const ANDROID_VIDEO_ID = 'kJyNoecmbwQ'
 const WINDOWS_DIRECT_VIDEO_ID = 'Y9NWj0J4_kk'
-const WINDOWS_EMULATOR_VIDEO_ID = 'pBk4NYhWNMM'
+const WINDOWS_EMULATOR_VIDEO_ID = 'Ga9z_Z13C0g'
 
 function StepBullet() {
   return (
