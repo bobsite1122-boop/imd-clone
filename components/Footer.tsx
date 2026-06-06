@@ -29,10 +29,10 @@ function InstagramIcon() {
   )
 }
 
-function XIcon({ size = 18 }: { size?: number }) {
+function TelegramIcon({ size = 18 }: { size?: number }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor" aria-hidden="true">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      <path d="M22.05 2.6 1.95 10.4c-1.4.55-1.39 1.32-.25 1.67l5.16 1.6 11.93-7.52c.56-.34 1.08-.16.66.22L9.78 14.95l-.36 5.34c.55 0 .79-.25 1.1-.55l2.65-2.57 5.18 3.83c.95.52 1.63.25 1.86-.88l3.36-15.86c.34-1.39-.55-2.02-1.52-1.66Z" />
     </svg>
   )
 }
@@ -55,7 +55,7 @@ function FacebookIcon() {
 
 const socials = [
   { label: 'YouTube', href: 'https://www.youtube.com/@iMDSubscriptions', Icon: YouTubeIcon, bg: 'bg-[#ff0000]' },
-  { label: 'X', href: 'https://x.com/iMDApp', Icon: () => <XIcon size={16} />, bg: 'bg-black' },
+  { label: 'Telegram', href: 'https://t.me/iMDApp', Icon: () => <TelegramIcon size={18} />, bg: 'bg-[#229ed9]' },
   { label: 'Instagram', href: '#', Icon: InstagramIcon, bg: 'bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]' },
   { label: 'WhatsApp', href: 'https://wa.me/923352220382', Icon: () => <WhatsAppIcon size={18} />, bg: 'bg-[#25d366]' },
   { label: 'Facebook', href: '#', Icon: FacebookIcon, bg: 'bg-[#1877f2]' },
@@ -66,11 +66,11 @@ export default function Footer() {
     <footer className="bg-[#0e3b77] pt-10 pb-8 text-white">
       <div className="container-main">
 
-        {/* ── Top section: Brand + 2 cols on tablet/desktop, stacked on mobile ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 pb-8 border-b border-white/10">
+        {/* ── Top section: 3 cols at desktop, stacked below ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 lg:gap-8 pb-8 border-b border-white/10">
 
           {/* Col 1 — Brand */}
-          <div className="sm:col-span-2 md:col-span-1">
+          <div>
             <Image
               src="/logo.png"
               alt="iMD Medical Resources"
@@ -91,13 +91,13 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm pb-2 mb-4 border-b border-white/30 block w-full">
               Useful Links
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav className="flex flex-col gap-1.5">
               {usefulLinks.map((link) =>
                 link.href.startsWith('#') ? (
                   <InstantAnchorLink
                     key={link.href}
                     href={link.href}
-                    className="text-[13px] text-white hover:text-blue-200 transition-colors min-h-[32px] flex items-center"
+                    className="text-[13px] text-white hover:text-blue-200 transition-colors min-h-[28px] flex items-center"
                   >
                     {link.label}
                   </InstantAnchorLink>
@@ -105,7 +105,7 @@ export default function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-[13px] text-white hover:text-blue-200 transition-colors min-h-[32px] flex items-center"
+                    className="text-[13px] text-white hover:text-blue-200 transition-colors min-h-[28px] flex items-center"
                   >
                     {link.label}
                   </Link>
@@ -116,10 +116,10 @@ export default function Footer() {
 
           {/* Col 3 — Follow Us */}
           <div>
-            <h4 className="text-white font-semibold text-sm pb-2 mb-4 border-b border-white/30 block w-full">
-              Follow us on
+            <h4 className="text-white font-semibold text-sm pb-2 mb-4 border-b border-white/30 block w-full text-center lg:text-left">
+              Follow us
             </h4>
-            <div className="flex flex-wrap items-center gap-2.5">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
               {socials.map((social) => (
                 <a
                   key={social.label}
@@ -142,28 +142,28 @@ export default function Footer() {
             You can contact us 24/7
           </p>
 
-          {/* Stacks on mobile, side-by-side from sm+ */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+          {/* Stacks on mobile/tablet, side-by-side from lg+ */}
+          <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 justify-center items-center max-w-md lg:max-w-none mx-auto">
 
-            {/* X */}
+            {/* Telegram */}
             <a
-              href="https://x.com/iMDApp"
+              href="https://t.me/iMDApp"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-black hover:bg-neutral-800 text-white rounded-[2rem] w-[170px] sm:w-[160px] min-h-[88px] flex flex-col items-center justify-center gap-1.5 transition-colors"
+              className="bg-[#229ed9] hover:bg-[#1e8fc4] text-white rounded-[2rem] w-full lg:w-[170px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"
             >
-              <XIcon size={22} />
-              <span className="text-[12px] font-medium leading-tight text-center">
-                Message on<br />X
+              <TelegramIcon size={20} />
+              <span className="text-[12px] font-bold leading-tight text-center">
+                Message on<br />Telegram
               </span>
             </a>
 
             {/* Email */}
             <a
               href="mailto:support@imdresources.com"
-              className="bg-white text-slate-800 hover:bg-gray-100 rounded-[2rem] w-[170px] sm:w-[160px] min-h-[88px] flex flex-col items-center justify-center gap-1.5 transition-colors"
+              className="bg-white text-slate-800 hover:bg-gray-100 rounded-[2rem] w-full lg:w-[200px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"
             >
-              <Mail size={22} aria-hidden="true" />
+              <Mail size={20} aria-hidden="true" />
               <span className="text-[11px] font-medium leading-tight text-center">
                 Email us at<br />support@imdresources.com
               </span>
@@ -174,9 +174,9 @@ export default function Footer() {
               href="https://wa.me/923352220382"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#25d366] hover:bg-[#1ebe5d] text-white rounded-[2rem] w-[170px] sm:w-[160px] min-h-[88px] flex flex-col items-center justify-center gap-1.5 transition-colors"
+              className="bg-[#25d366] hover:bg-[#1ebe5d] text-white rounded-[2rem] w-full lg:w-[170px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"
             >
-              <WhatsAppIcon size={22} />
+              <WhatsAppIcon size={20} />
               <span className="text-[12px] font-bold leading-tight text-center">
                 Contact on<br />WhatsApp
               </span>

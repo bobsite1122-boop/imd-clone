@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
 
 export type FAQItem = {
   question: string
@@ -10,9 +9,26 @@ export type FAQItem = {
 
 type FAQAccordionProps = {
   items: FAQItem[]
+  startIndex?: number
 }
 
-export default function FAQAccordion({ items }: FAQAccordionProps) {
+function CaretDown({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 12 8"
+      width={12}
+      height={8}
+      aria-hidden="true"
+      className={`shrink-0 fill-[#0e3b77] transition-transform duration-200 ${
+        open ? 'rotate-180' : ''
+      }`}
+    >
+      <path d="M0 0 L12 0 L6 8 Z" />
+    </svg>
+  )
+}
+
+export default function FAQAccordion({ items, startIndex = 1 }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const toggle = (index: number) => {
@@ -20,35 +36,37 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
   }
 
   return (
-    <div className="bg-white rounded-card border border-gray-100 shadow-card divide-y divide-gray-100">
+    <div className="flex flex-col gap-2 sm:gap-2.5">
       {items.map((item, index) => {
         const isOpen = openIndex === index
+        const number = startIndex + index
         return (
-          <div key={index}>
+          <div
+            key={index}
+            className="bg-white rounded-md border border-slate-200/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)] overflow-hidden"
+          >
             <button
+              type="button"
               onClick={() => toggle(index)}
-              className="w-full flex items-center justify-between py-5 px-6 cursor-pointer hover:text-brand transition-colors text-left"
               aria-expanded={isOpen}
+              className="w-full flex items-center justify-between gap-4 px-4 py-3 sm:px-5 sm:py-3.5 text-left min-h-[44px] cursor-pointer hover:bg-slate-50/60 transition-colors"
             >
-              <span className="font-semibold text-slate-800 text-base flex-1 pr-4">
+              <span className="text-[13px] sm:text-sm text-slate-700 font-medium leading-snug">
+                <span className="mr-1.5">{number}.</span>
                 {item.question}
               </span>
-              <ChevronDown
-                size={20}
-                className={`text-brand shrink-0 transition-transform duration-200 ${
-                  isOpen ? 'rotate-180' : ''
-                }`}
-                aria-hidden="true"
-              />
+              <CaretDown open={isOpen} />
             </button>
             <div
-              className={`overflow-hidden transition-all duration-300 ${
-                isOpen ? 'max-h-96' : 'max-h-0'
+              className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
               }`}
             >
-              <p className="text-gray-500 text-sm leading-relaxed px-6 pb-5">
-                {item.answer}
-              </p>
+              <div className="overflow-hidden">
+                <p className="px-4 sm:px-5 pb-4 pt-0 text-[13px] sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
+                  <span className="block pt-3">{item.answer}</span>
+                </p>
+              </div>
             </div>
           </div>
         )

@@ -1,119 +1,156 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import FAQAccordion, { type FAQItem } from '@/components/FAQAccordion'
 
 export const metadata: Metadata = {
   title: 'FAQs | iMD Medical Resources',
-  description: 'Everything you need to know about your iMD subscription, payments, and app usage.',
+  description:
+    'Find answers to common questions about iMD Subscription, the iMD App, payments, and more.',
 }
 
 const subscriptionFAQs: FAQItem[] = [
   {
-    question: 'What is the iMD subscription?',
+    question: 'What is the iMD Subscription?',
     answer:
-      'Full access to all premium medical databases, question banks, books, and video lectures inside the iMD app for your selected subscription duration.',
+      'The iMD Subscription gives you full premium access to every database, question bank, textbook, and video lecture inside the iMD App for the duration of your selected plan.',
   },
   {
-    question: 'How do I subscribe?',
+    question: 'How do I purchase an iMD Subscription?',
     answer:
-      "Simply click the 'Subscribe Now' button on any plan. It will open WhatsApp with a pre-filled message. Fill in the required details and our team will process your subscription within minutes.",
+      "Choose a plan and click 'Subscribe Now'. WhatsApp will open with a pre-filled message — share the required details, complete the payment, and our team will activate your subscription within minutes.",
   },
   {
     question: 'What payment methods are accepted?',
     answer:
-      'We accept local bank transfers (Pakistan: JazzCash, Easypaisa, bank transfer), cryptocurrency (Bitcoin, USDT), and other local payment methods depending on your country. Contact us to confirm options for your region.',
+      'We accept local bank transfers, JazzCash, Easypaisa, debit/credit cards, and cryptocurrency (Bitcoin, USDT). International users can ask our team to confirm payment options for their region.',
   },
   {
-    question: 'Can I extend my current subscription?',
+    question: 'Can I extend or renew my iMD Subscription?',
     answer:
-      "Yes! Click the 'Extend Now' button on any plan or contact us directly. Your remaining days carry over and we add your new duration on top.",
+      "Yes. Click 'Extend Now' on any plan or message us directly. Any remaining days from your current plan are carried over and your new duration is added on top.",
   },
   {
-    question: 'Is there a refund policy?',
+    question: 'Is the iMD Subscription refundable?',
     answer:
       'We offer a 7-day satisfaction guarantee. If the app does not match its described features, contact our support team within 7 days of subscribing for a full refund.',
   },
   {
-    question: 'Can I share my subscription with someone else?',
+    question: 'Does the iMD Subscription include updates?',
     answer:
-      'Subscriptions are for individual use only. Sharing credentials is a violation of our terms and may result in account suspension without refund.',
+      'Yes. All app updates and newly added databases, books, and question banks released during your subscription window are included at no extra cost.',
+  },
+  {
+    question: 'How do I transfer my subscription to another device?',
+    answer:
+      'Simply log out from your current device and log in on the new one with the same credentials. Your account, downloads, and progress remain tied to your username — no transfer fee required.',
+  },
+  {
+    question: 'Is there a free trial available?',
+    answer:
+      'We do not offer an automatic free trial, but our team can walk you through a live demo on WhatsApp so you can preview the content library before subscribing.',
+  },
+  {
+    question: 'What happens when my iMD Subscription expires?',
+    answer:
+      'Once the subscription ends, premium content inside the app is locked. You can renew at any time and immediately regain full access — your downloads and bookmarks are preserved.',
+  },
+  {
+    question: 'Can I share my iMD Subscription with others?',
+    answer:
+      'Subscriptions are for individual use only. Sharing your credentials is a violation of our terms and may result in account suspension without a refund.',
   },
 ]
 
 const appFAQs: FAQItem[] = [
   {
-    question: 'Which devices are supported?',
+    question: 'What is the iMD App?',
     answer:
-      'iMD App works on Android smartphones and tablets, iPhone and iPad (iOS), Windows PC and laptop, macOS (Apple Mac), and as a Chrome browser extension.',
+      'The iMD App is an all-in-one medical learning platform with 45,000+ resources — databases, question banks, textbooks, and video lectures — designed for medical students and clinicians.',
   },
   {
-    question: 'Does it work without internet?',
+    question: 'How do I download the iMD App?',
     answer:
-      'Yes — most downloaded content works offline. You need internet for account activation, first-time login, syncing, and downloading new content.',
+      'After subscribing, you will receive a personalised download link and credentials via WhatsApp/Email. Detailed step-by-step instructions for every platform are available on our Download/Install page.',
   },
   {
-    question: 'How much storage space is needed?',
+    question: 'On which devices/platforms is iMD App Available?',
     answer:
-      'The app itself is under 200MB. Downloaded databases and textbooks can require 5–25GB depending on which resources you download. External storage is supported on Android.',
+      'iMD App runs on Android phones and tablets, iPhone and iPad (iOS), Windows PCs/laptops, macOS (Apple Mac), and as a Chrome browser extension.',
   },
   {
-    question: 'Can I use it on multiple devices simultaneously?',
+    question: 'Can I use the iMD App on multiple devices?',
     answer:
-      'You can install the app on multiple devices, but only one device can be active at a time. Logging into a new device will log out the previous session.',
+      'Yes — install the app on as many devices as you like. Only one device can be actively logged in at a time; signing in on a new device automatically signs you out of the previous one.',
   },
   {
-    question: 'How do I get my login credentials after subscribing?',
+    question: 'How much space does the iMD App require?',
     answer:
-      'After payment confirmation, we will email and/or WhatsApp you your username, password, and download link within 1–2 hours.',
+      'The app itself is under 200MB. Downloaded databases and textbooks can range from 5GB to 25GB depending on the resources you choose. External storage is supported on Android.',
+  },
+  {
+    question: 'What content is available inside the iMD App?',
+    answer:
+      'You get access to leading medical databases, USMLE/PLAB/NEET-PG question banks, classic and modern textbooks, video lectures, clinical references, and continually updated study resources.',
+  },
+  {
+    question: 'Is an internet connection required to use the iMD App?',
+    answer:
+      'You only need internet for the first-time activation, login, syncing, and downloading new content. Once a resource is downloaded, you can study it fully offline.',
+  },
+  {
+    question: 'How often is the iMD App updated?',
+    answer:
+      'The app and its content libraries are updated regularly — usually every few weeks — with new editions, new question banks, bug fixes, and performance improvements.',
+  },
+  {
+    question: 'I’m facing an issue with the app — what should I do?',
+    answer:
+      'Reach out to our support team 24/7 on WhatsApp, Telegram, or email at support@imdresources.com. Most issues are resolved within minutes.',
   },
 ]
 
-function CategoryHeading({ children }: { children: React.ReactNode }) {
+function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mt-10 mb-6">
-      <h2 className="text-lg font-bold text-slate-800 mb-1">{children}</h2>
-      <div className="h-0.5 w-12 bg-brand" />
-    </div>
+    <h2 className="text-center text-[#0e3b77] font-bold text-xl sm:text-2xl mt-12 sm:mt-14 mb-5 sm:mb-6">
+      {children}
+    </h2>
   )
 }
 
 export default function FAQsPage() {
   return (
     <>
-      {/* Page Header */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16 text-center">
+      {/* Top Banner */}
+      <section className="bg-[#eaf2fb] py-10 sm:py-14 text-center">
         <div className="container-main">
-          <h1 className="font-display text-4xl font-black text-slate-900">
-            Frequently Asked Questions
+          <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-[#0e3b77]">
+            FAQs
           </h1>
-          <p className="text-gray-500 text-lg mt-3">
-            Everything you need to know about your iMD subscription
+        </div>
+      </section>
+
+      {/* Page Title */}
+      <section className="pt-10 sm:pt-14 pb-2">
+        <div className="container-main text-center">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-[34px] font-extrabold text-[#0e3b77] leading-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="mt-3 sm:mt-4 text-slate-500 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Find answers to common questions about iMD Subscription, the iMD
+            App, payments, and more.
           </p>
         </div>
       </section>
 
-      {/* FAQ Content */}
-      <div className="max-w-3xl mx-auto px-4 pb-20">
-        <CategoryHeading>Subscription &amp; Payment</CategoryHeading>
-        <FAQAccordion items={subscriptionFAQs} />
+      {/* FAQ Lists */}
+      <section className="pb-16 sm:pb-20">
+        <div className="max-w-[640px] mx-auto px-4">
+          <SectionTitle>Subscription</SectionTitle>
+          <FAQAccordion items={subscriptionFAQs} startIndex={1} />
 
-        <CategoryHeading>The iMD App</CategoryHeading>
-        <FAQAccordion items={appFAQs} />
-
-        {/* CTA */}
-        <div className="text-center mt-16 p-10 bg-brand/5 rounded-2xl border border-brand/20">
-          <p className="text-xl font-bold text-slate-800">Still have questions?</p>
-          <p className="text-gray-500 mt-2">
-            Our team is available 24/7 on WhatsApp and Telegram
-          </p>
-          <Link
-            href="/#support"
-            className="btn-primary inline-block mt-6 min-h-[44px] leading-[44px] px-8"
-          >
-            Contact Support
-          </Link>
+          <SectionTitle>iMD App</SectionTitle>
+          <FAQAccordion items={appFAQs} startIndex={11} />
         </div>
-      </div>
+      </section>
     </>
   )
 }
