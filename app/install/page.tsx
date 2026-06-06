@@ -1,168 +1,301 @@
 'use client'
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { AlertTriangle } from 'lucide-react'
-import TabSwitcher from '@/components/TabSwitcher'
+import { useState, type ReactNode } from 'react'
 
-type Step = { title: string; desc: string }
+type PlatformId = 'iOS' | 'Android' | 'macOS' | 'Windows'
 
-const platformSteps: Record<string, Step[]> = {
-  Android: [
-    {
-      title: 'Open the download link',
-      desc: 'Click the Android download link sent to you via WhatsApp/Email after subscribing.',
-    },
-    {
-      title: 'Allow unknown sources',
-      desc: "In your Android Settings → Security, enable 'Install from unknown sources'.",
-    },
-    {
-      title: 'Install the APK',
-      desc: 'Open the downloaded .apk file and follow the on-screen installation steps.',
-    },
-    {
-      title: 'Launch & login',
-      desc: 'Open iMD App, enter your username and password from your welcome email.',
-    },
-    {
-      title: 'Start downloading resources',
-      desc: 'Browse and download your preferred medical databases and textbooks.',
-    },
-  ],
-  iOS: [
-    {
-      title: 'Open your welcome email or WhatsApp',
-      desc: 'After subscribing, you will receive a personal iOS installation link via WhatsApp or email.',
-    },
-    {
-      title: 'Tap the installation link on your iPhone/iPad',
-      desc: "Open the link directly on your iOS device. Tap 'Allow' when prompted to install the profile.",
-    },
-    {
-      title: 'Trust the developer profile',
-      desc: "Go to Settings → General → VPN & Device Management and tap 'Trust' on the iMD profile.",
-    },
-    {
-      title: 'Launch iMD App',
-      desc: 'Open the app from your home screen and log in with your username and password.',
-    },
-    {
-      title: 'Download your content',
-      desc: 'Browse the resource library and download databases for offline study.',
-    },
-  ],
-  Windows: [
-    {
-      title: 'Receive your download link',
-      desc: 'Check the WhatsApp message or email sent after subscribing for your Windows installer link.',
-    },
-    {
-      title: 'Download the installer',
-      desc: 'Click the link to download the iMD App Windows setup (.exe) file to your PC.',
-    },
-    {
-      title: 'Run the installer',
-      desc: "Double-click the .exe file. If Windows SmartScreen appears, click 'More info' → 'Run anyway'.",
-    },
-    {
-      title: 'Launch & login',
-      desc: 'Open iMD App from the desktop shortcut and sign in with your credentials.',
-    },
-    {
-      title: 'Download resources',
-      desc: 'Select and download your preferred databases. External drives are supported for large libraries.',
-    },
-  ],
-  macOS: [
-    {
-      title: 'Receive your download link',
-      desc: 'After subscribing, your personal macOS download link will be sent via WhatsApp or email.',
-    },
-    {
-      title: 'Download the .dmg file',
-      desc: 'Click the link and save the iMD App disk image (.dmg) to your Mac.',
-    },
-    {
-      title: 'Open and install',
-      desc: "Double-click the .dmg, drag iMD App to your Applications folder. If prompted, go to System Settings → Privacy & Security and allow the app.",
-    },
-    {
-      title: 'Launch & login',
-      desc: 'Open iMD App from Applications or Spotlight, and enter your username and password.',
-    },
-    {
-      title: 'Start studying',
-      desc: 'Download content directly within the app. Ensure you have sufficient storage for large databases.',
-    },
-  ],
+const TABS: PlatformId[] = ['iOS', 'Android', 'macOS', 'Windows']
+
+const APK_URL = 'https://sg.imedicaldoctor.net/imd192.apk'
+
+// YouTube video IDs used inside the platform instructions.
+// Replace these with the latest video IDs from the iMD App YouTube channel
+// when they change on https://imdresources.com/install/.
+const ANDROID_VIDEO_ID = 'kJyNoecmbwQ'
+const WINDOWS_DIRECT_VIDEO_ID = 'Y9NWj0J4_kk'
+const WINDOWS_EMULATOR_VIDEO_ID = 'pBk4NYhWNMM'
+
+function StepBullet() {
+  return (
+    <span
+      aria-hidden="true"
+      className="mt-[7px] sm:mt-[8px] shrink-0 w-[10px] h-[10px] rounded-full bg-[#0e3b77]"
+    />
+  )
 }
 
-const TABS = ['Android', 'iOS', 'Windows', 'macOS']
+function StepText({ children }: { children: ReactNode }) {
+  return (
+    <p className="text-[13px] sm:text-[14px] text-[#0e3b77] leading-relaxed">
+      {children}
+    </p>
+  )
+}
 
-export default function InstallPage() {
-  const [activeTab, setActiveTab] = useState('Android')
-  const steps = platformSteps[activeTab]
+function YouTubeEmbed({ id, title }: { id: string; title: string }) {
+  return (
+    <div className="mt-3 relative w-full overflow-hidden rounded-lg bg-black shadow-sm aspect-video">
+      <iframe
+        src={`https://www.youtube.com/embed/${id}?rel=0`}
+        title={title}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        className="absolute inset-0 h-full w-full border-0"
+      />
+    </div>
+  )
+}
+
+function ActivationForm({ platform }: { platform: PlatformId }) {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const message = `Hi, I'd like the ${platform} activation code.\nUsername: ${username}\nPassword: ${password}`
+    const url = `https://wa.me/923352220382?text=${encodeURIComponent(message)}`
+    window.open(url, '_blank', 'noopener')
+  }
 
   return (
-    <>
-      {/* Page Header */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-800 py-16 text-center">
-        <div className="container-main">
-          <h1 className="text-white font-display text-4xl font-black">
-            Download &amp; Install iMD App
-          </h1>
-          <p className="text-gray-400 text-lg mt-3">
-            Follow the simple steps for your device
+    <form onSubmit={handleSubmit} className="mt-3 flex flex-col gap-3">
+      <label className="sr-only" htmlFor={`${platform}-username`}>
+        Username
+      </label>
+      <input
+        id={`${platform}-username`}
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Enter your username"
+        autoComplete="username"
+        className="w-full h-11 rounded-md border border-slate-300 bg-white px-3 text-[13px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0e3b77]/40 focus:border-[#0e3b77]"
+      />
+      <label className="sr-only" htmlFor={`${platform}-password`}>
+        Password
+      </label>
+      <input
+        id={`${platform}-password`}
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Enter your password"
+        autoComplete="current-password"
+        className="w-full h-11 rounded-md border border-slate-300 bg-white px-3 text-[13px] text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0e3b77]/40 focus:border-[#0e3b77]"
+      />
+      <button
+        type="submit"
+        className="w-full min-h-[44px] rounded-md bg-[#0e3b77] hover:bg-[#0a2d5e] text-white text-sm font-semibold transition-colors"
+      >
+        Fetch Activation Code
+      </button>
+    </form>
+  )
+}
+
+function ActivationSteps({
+  platform,
+  thirdStep,
+}: {
+  platform: PlatformId
+  thirdStep: string
+}) {
+  return (
+    <ol className="mt-3 sm:mt-4 flex flex-col gap-5">
+      <li className="flex items-start gap-3">
+        <StepBullet />
+        <div className="flex-1 min-w-0">
+          <StepText>Enter your Username &amp; Password:</StepText>
+          <ActivationForm platform={platform} />
+        </div>
+      </li>
+      <li className="flex items-start gap-3">
+        <StepBullet />
+        <div className="flex-1 min-w-0">
+          <StepText>Copy the activation code.</StepText>
+        </div>
+      </li>
+      <li className="flex items-start gap-3">
+        <StepBullet />
+        <div className="flex-1 min-w-0">
+          <StepText>{thirdStep}</StepText>
+        </div>
+      </li>
+    </ol>
+  )
+}
+
+function AndroidSteps() {
+  return (
+    <ol className="mt-3 sm:mt-4 flex flex-col gap-5">
+      <li className="flex items-start gap-3">
+        <StepBullet />
+        <div className="flex-1 min-w-0">
+          <StepText>Direct Download Link:</StepText>
+          <a
+            href={APK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 block w-full text-center min-h-[52px] py-3.5 px-4 rounded-md bg-[#0e3b77] hover:bg-[#0a2d5e] text-white text-[15px] sm:text-base font-semibold transition-colors"
+          >
+            Download APK
+          </a>
+        </div>
+      </li>
+      <li className="flex items-start gap-3">
+        <StepBullet />
+        <div className="flex-1 min-w-0">
+          <StepText>Watch this video for better understanding</StepText>
+          <YouTubeEmbed
+            id={ANDROID_VIDEO_ID}
+            title="How to install iMD App on Android"
+          />
+        </div>
+      </li>
+    </ol>
+  )
+}
+
+function WindowsSteps() {
+  return (
+    <ol className="mt-3 sm:mt-4 flex flex-col gap-6">
+      <li className="flex items-start gap-3">
+        <StepBullet />
+        <div className="flex-1 min-w-0">
+          <StepText>
+            <span aria-hidden="true">💻💻 </span>
+            <span className="font-semibold">In Windows:</span>
+          </StepText>
+          <p className="mt-3 text-[13px] sm:text-[14px] text-[#0e3b77] leading-relaxed">
+            If <strong className="font-semibold">16GB or higher RAM</strong>{' '}
+            &mdash; follow the direct installation video guide:
           </p>
+          <YouTubeEmbed
+            id={WINDOWS_DIRECT_VIDEO_ID}
+            title="Windows direct installation guide"
+          />
+        </div>
+      </li>
+      <li className="flex items-start gap-3">
+        <StepBullet />
+        <div className="flex-1 min-w-0">
+          <StepText>
+            If <strong className="font-semibold">8GB or lower RAM</strong>{' '}
+            (or the above method is not available despite RAM) &mdash; install
+            through emulator following this video:
+          </StepText>
+          <YouTubeEmbed
+            id={WINDOWS_EMULATOR_VIDEO_ID}
+            title="Windows emulator installation guide"
+          />
+        </div>
+      </li>
+    </ol>
+  )
+}
+
+function PlatformContent({ tab }: { tab: PlatformId }) {
+  switch (tab) {
+    case 'iOS':
+      return (
+        <ActivationSteps
+          platform="iOS"
+          thirdStep="Install the app and activate as guided. DM us for futher help."
+        />
+      )
+    case 'macOS':
+      return (
+        <ActivationSteps
+          platform="macOS"
+          thirdStep="Install the app as guided or contact us to guide you."
+        />
+      )
+    case 'Android':
+      return <AndroidSteps />
+    case 'Windows':
+      return <WindowsSteps />
+  }
+}
+
+function PlatformTabs({
+  active,
+  onChange,
+}: {
+  active: PlatformId
+  onChange: (tab: PlatformId) => void
+}) {
+  return (
+    <div
+      role="tablist"
+      aria-label="Choose a platform"
+      className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+    >
+      {TABS.map((tab) => {
+        const isActive = active === tab
+        return (
+          <button
+            key={tab}
+            type="button"
+            role="tab"
+            aria-selected={isActive}
+            aria-controls="platform-instructions"
+            onClick={() => onChange(tab)}
+            className={`min-h-[36px] px-5 sm:px-6 rounded-full text-[13px] sm:text-sm font-semibold transition-colors ${
+              isActive
+                ? 'bg-[#0e3b77] text-white shadow-sm'
+                : 'bg-[#eaf2fb] text-[#0e3b77] hover:bg-[#dde9f7]'
+            }`}
+          >
+            {tab}
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+export default function InstallPage() {
+  const [activeTab, setActiveTab] = useState<PlatformId>('iOS')
+
+  return (
+    <div className="bg-[#eaf2fb] min-h-[60vh]">
+      {/* Page heading */}
+      <section className="pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10 text-center">
+        <div className="container-main">
+          <h1 className="font-display text-[24px] sm:text-[30px] lg:text-[34px] font-extrabold text-[#0e3b77] leading-tight">
+            Download and Install iMD App
+          </h1>
         </div>
       </section>
 
-      {/* Content */}
-      <div className="max-w-3xl mx-auto px-4 py-14">
+      {/* Card */}
+      <section className="pb-16 sm:pb-20">
+        <div className="mx-auto px-4 sm:px-6 max-w-[640px]">
+          <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgba(15,23,42,0.06)] border border-slate-100 px-5 sm:px-8 py-7 sm:py-9">
+            <h2 className="text-center font-display text-[20px] sm:text-[22px] font-extrabold text-[#0e3b77]">
+              Choose Your Platform
+            </h2>
 
-        {/* Tab Switcher */}
-        <TabSwitcher tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
-
-        {/* Steps */}
-        <div className="mt-10">
-          {steps.map((step, index) => (
-            <div key={index} className="flex items-start gap-4 mb-8">
-              <div className="w-8 h-8 rounded-full bg-brand text-white font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                {index + 1}
-              </div>
-              <div>
-                <p className="font-semibold text-slate-800">{step.title}</p>
-                <p className="text-sm text-gray-500 mt-0.5">{step.desc}</p>
-              </div>
+            <div className="mt-5 sm:mt-6">
+              <PlatformTabs active={activeTab} onChange={setActiveTab} />
             </div>
-          ))}
-        </div>
 
-        {/* Warning Box */}
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mt-10 flex gap-3 items-start">
-          <AlertTriangle size={20} className="text-amber-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
-          <div>
-            <p className="font-semibold text-amber-800">Official Downloads Only</p>
-            <p className="text-sm text-amber-700 mt-1">
-              After subscribing, you will receive your personal download link and credentials via
-              WhatsApp/Email. Never download iMD App from unofficial or third-party sources.
-            </p>
+            <div
+              id="platform-instructions"
+              role="tabpanel"
+              aria-label={`${activeTab} instructions`}
+            >
+              <h3 className="mt-7 sm:mt-8 font-display text-[18px] sm:text-[20px] font-extrabold text-[#0e3b77]">
+                {activeTab} Instructions
+              </h3>
+
+              <PlatformContent tab={activeTab} />
+            </div>
           </div>
         </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <p className="text-xl font-bold text-slate-800">Not subscribed yet?</p>
-          <Link
-            href="/#subscribenow"
-            className="btn-primary inline-block mt-4 min-h-[44px] leading-[44px] px-8"
-          >
-            Get a Subscription Now →
-          </Link>
-        </div>
-
-      </div>
-    </>
+      </section>
+    </div>
   )
 }
