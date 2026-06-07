@@ -36,7 +36,7 @@ export default function Hero() {
 
           {/* Eyebrow */}
           <p className="text-[15px] sm:text-base md:text-lg font-semibold text-white/95">
-            iMD App
+            IMD App
           </p>
 
           {/* Headline */}
