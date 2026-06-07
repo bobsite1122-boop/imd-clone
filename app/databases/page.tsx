@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'iMD App QBanks, Databases and Resources - iMD Medical Resources',
+  title: 'iMD App QBanks, Databases and Resources - IMD App PK',
   description:
     '45,000+ premium medical databases, QBanks, video lectures, books and clinical practice references included in your iMD subscription.',
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import FAQAccordion, { type FAQItem } from '@/components/FAQAccordion'
 
 export const metadata: Metadata = {
-  title: 'FAQs - iMD Medical Resources',
+  title: 'FAQs - IMD App PK',
   description:
     'Find answers to common questions about IMD Subscription, the IMD App, payments, and more.',
 }

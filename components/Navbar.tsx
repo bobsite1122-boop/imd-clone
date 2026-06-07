@@ -35,14 +35,14 @@ export default function Navbar() {
         >
           <Image
             src="/logo.png"
-            alt="iMD Medical Resources"
+            alt="IMD App PK"
             width={96}
             height={96}
             priority
             className="rounded-full object-cover shrink-0 w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 bg-white"
           />
-          <span className="text-white font-semibold text-[13px] sm:text-sm md:text-[15px] leading-tight truncate">
-            iMD Medical Resources
+          <span className="text-white font-semibold text-[14px] sm:text-[15px] md:text-[16px] leading-tight truncate">
+            IMD App PK
           </span>
         </Link>
 

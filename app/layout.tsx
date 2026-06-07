@@ -18,7 +18,7 @@ const sora = Sora({
 })
 
 export const metadata: Metadata = {
-  title: 'iMD App Pakistan | Medical Resources',
+  title: 'IMD App PK | Medical Resources',
   description:
     "Pakistan's premier medical education subscription platform. Access 45,000+ medical resources.",
   keywords: ['medical app', 'USMLE', 'medical subscription', 'Pakistan', 'medical resources'],

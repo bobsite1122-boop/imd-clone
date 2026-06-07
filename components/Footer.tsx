@@ -73,13 +73,13 @@ export default function Footer() {
           <div>
             <Image
               src="/logo.png"
-              alt="iMD Medical Resources"
+              alt="IMD App PK"
               width={96}
               height={96}
               className="rounded-full object-cover bg-white w-14 h-14 sm:w-16 sm:h-16"
             />
             <h3 className="text-white font-bold text-base mt-3">
-              iMD Medical Resources
+              IMD App PK
             </h3>
             <p className="text-[13px] text-blue-200 mt-1.5 leading-relaxed max-w-xs">
               Your trusted source for medical education and exam preparation.
