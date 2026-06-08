@@ -46,7 +46,6 @@ const NAVY = '#0d1b3e'
 
 const buildFeatures = (days: string) => [
   `Full Access For ${days}`,
-  'VIP Premium Plan',
   'International IP Use',
   'Unlimited Access to All Databases',
   'Unlock 45,000+ Premium Resources',
@@ -60,10 +59,10 @@ export default function PricingSection() {
         {/* Heading */}
         <div className="text-center mb-10">
           <h2
-            className="font-display font-black text-2xl md:text-[1.7rem] leading-tight tracking-wide uppercase"
+            className="font-display font-black text-2xl md:text-[1.7rem] leading-tight tracking-wide"
             style={{ color: '#0b1530' }}
           >
-            Choose Your iMD App<br />Subscription Plan
+            Choose your subscription plan
           </h2>
           <div
             className="mx-auto mt-3 h-px w-64 max-w-full"
