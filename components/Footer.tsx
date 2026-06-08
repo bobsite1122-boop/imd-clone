@@ -2,6 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Mail } from 'lucide-react'
 import InstantAnchorLink from '@/components/InstantAnchorLink'
+import {
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  SUPPORT_EMAIL,
+  TELEGRAM_URL,
+  WHATSAPP_URL,
+  YOUTUBE_URL,
+} from '@/lib/contact'
 
 const usefulLinks = [
   { label: 'Databases & Resources', href: '/databases' },
@@ -54,11 +62,11 @@ function FacebookIcon() {
 }
 
 const socials = [
-  { label: 'YouTube', href: 'https://www.youtube.com/@iMDSubscriptions', Icon: YouTubeIcon, bg: 'bg-[#ff0000]' },
-  { label: 'Telegram', href: 'https://t.me/iMDApp', Icon: () => <TelegramIcon size={18} />, bg: 'bg-[#229ed9]' },
-  { label: 'Instagram', href: '#', Icon: InstagramIcon, bg: 'bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]' },
-  { label: 'WhatsApp', href: 'https://wa.me/923352220382', Icon: () => <WhatsAppIcon size={18} />, bg: 'bg-[#25d366]' },
-  { label: 'Facebook', href: '#', Icon: FacebookIcon, bg: 'bg-[#1877f2]' },
+  { label: 'YouTube', href: YOUTUBE_URL, Icon: YouTubeIcon, bg: 'bg-[#ff0000]' },
+  { label: 'Telegram', href: TELEGRAM_URL, Icon: () => <TelegramIcon size={18} />, bg: 'bg-[#229ed9]' },
+  { label: 'Instagram', href: INSTAGRAM_URL, Icon: InstagramIcon, bg: 'bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]' },
+  { label: 'WhatsApp', href: WHATSAPP_URL, Icon: () => <WhatsAppIcon size={18} />, bg: 'bg-[#25d366]' },
+  { label: 'Facebook', href: FACEBOOK_URL, Icon: FacebookIcon, bg: 'bg-[#1877f2]' },
 ]
 
 export default function Footer() {
@@ -147,7 +155,7 @@ export default function Footer() {
 
             {/* Telegram */}
             <a
-              href="https://t.me/iMDApp"
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#229ed9] hover:bg-[#1e8fc4] text-white rounded-[2rem] w-full lg:w-[170px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"
@@ -160,18 +168,18 @@ export default function Footer() {
 
             {/* Email */}
             <a
-              href="mailto:support@imdresources.com"
+              href={`mailto:${SUPPORT_EMAIL}`}
               className="bg-white text-slate-800 hover:bg-gray-100 rounded-[2rem] w-full lg:w-[200px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"
             >
               <Mail size={20} aria-hidden="true" />
               <span className="text-[11px] font-medium leading-tight text-center">
-                Email us at<br />support@imdresources.com
+                Email us at<br />{SUPPORT_EMAIL}
               </span>
             </a>
 
             {/* WhatsApp */}
             <a
-              href="https://wa.me/923352220382"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25d366] hover:bg-[#1ebe5d] text-white rounded-[2rem] w-full lg:w-[170px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"

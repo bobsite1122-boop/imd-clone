@@ -1,4 +1,5 @@
 import { Check } from 'lucide-react'
+import { WHATSAPP_NUMBER } from '@/lib/contact'
 
 type Plan = {
   id: number
@@ -16,9 +17,9 @@ const plans: Plan[] = [
     price: '$50',
     days: '180 Days',
     subscribeLink:
-      'https://wa.me/923445633373?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%206%20months%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A',
+      `https://wa.me/${WHATSAPP_NUMBER}?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%206%20months%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A`,
     extendLink:
-      'https://wa.me/923445633373?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%206%20months%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A',
+      `https://wa.me/${WHATSAPP_NUMBER}?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%206%20months%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A`,
   },
   {
     id: 2,
@@ -26,9 +27,9 @@ const plans: Plan[] = [
     price: '$75',
     days: '365 Days',
     subscribeLink:
-      'https://wa.me/923445633373?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%201%20year%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A',
+      `https://wa.me/${WHATSAPP_NUMBER}?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%201%20year%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A`,
     extendLink:
-      'https://wa.me/923445633373?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%201%20year%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A',
+      `https://wa.me/${WHATSAPP_NUMBER}?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%201%20year%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A`,
   },
   {
     id: 3,
@@ -36,9 +37,9 @@ const plans: Plan[] = [
     price: '$150',
     days: '730 Days',
     subscribeLink:
-      'https://wa.me/923445633373?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%202%20years%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A',
+      `https://wa.me/${WHATSAPP_NUMBER}?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%202%20years%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A`,
     extendLink:
-      'https://wa.me/923445633373?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%202%20years%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A',
+      `https://wa.me/${WHATSAPP_NUMBER}?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%202%20years%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A`,
   },
 ]
 

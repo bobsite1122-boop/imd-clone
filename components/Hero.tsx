@@ -1,10 +1,9 @@
 import Link from 'next/link'
+import { whatsAppUrl } from '@/lib/contact'
 
-const WHATSAPP_URL =
-  'https://wa.me/923352220382?text=' +
-  encodeURIComponent(
-    "Hi! I'd like to get the iMD App. Please share details and pricing.",
-  )
+const WHATSAPP_URL = whatsAppUrl(
+  "Hi! I'd like to get the iMD App. Please share details and pricing.",
+)
 
 function WhatsAppGlyph({ size = 18 }: { size?: number }) {
   return (

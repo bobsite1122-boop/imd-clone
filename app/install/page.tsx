@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, type ReactNode } from 'react'
+import { whatsAppUrl } from '@/lib/contact'
 
 type PlatformId = 'iOS' | 'Android' | 'macOS' | 'Windows'
 
@@ -55,7 +56,7 @@ function ActivationForm({ platform }: { platform: PlatformId }) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const message = `Hi, I'd like the ${platform} activation code.\nUsername: ${username}\nPassword: ${password}`
-    const url = `https://wa.me/923352220382?text=${encodeURIComponent(message)}`
+    const url = whatsAppUrl(message)
     window.open(url, '_blank', 'noopener')
   }
 

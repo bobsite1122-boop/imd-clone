@@ -1,21 +1,22 @@
 import { Send, MessageCircle, Mail } from 'lucide-react'
+import { SUPPORT_EMAIL, TELEGRAM_URL, WHATSAPP_URL } from '@/lib/contact'
 
 const contacts = [
   {
     label: 'Message on Telegram',
-    href: 'https://t.me/iMDrahmat',
+    href: TELEGRAM_URL,
     bg: 'bg-[#2aabee] hover:opacity-90',
     icon: Send,
   },
   {
     label: 'Contact on WhatsApp',
-    href: 'https://wa.me/923445633373',
+    href: WHATSAPP_URL,
     bg: 'bg-[#25d366] hover:opacity-90',
     icon: MessageCircle,
   },
   {
     label: 'Email Us',
-    href: 'mailto:support@imdresources.com',
+    href: `mailto:${SUPPORT_EMAIL}`,
     bg: 'bg-indigo-600 hover:opacity-90',
     icon: Mail,
   },

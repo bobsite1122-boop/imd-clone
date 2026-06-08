@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { WHATSAPP_URL } from '@/lib/contact'
 
 function WhatsAppGlyph({ size = 28 }: { size?: number }) {
   return (
@@ -21,7 +22,7 @@ export default function WhatsAppFloat() {
         Need Help? Chat with us
       </span>
       <Link
-        href="https://wa.me/923352220382"
+        href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
