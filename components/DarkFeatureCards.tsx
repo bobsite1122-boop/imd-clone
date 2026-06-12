@@ -81,7 +81,7 @@ export default function DarkFeatureCards() {
               priority={false}
               sizes="(min-width: 768px) 672px, 100vw"
               aria-hidden="true"
-              className="pointer-events-none select-none object-cover object-center opacity-25 sm:opacity-30 -z-10"
+              className="pointer-events-none select-none object-cover object-center opacity-35 sm:opacity-40 -z-10"
             />
             {/* Dark gradient overlay for text contrast */}
             <div
