@@ -67,41 +67,47 @@ export default function DarkFeatureCards() {
 
           {/* ── CARD 1 — USMLE ── */}
           <article
-            className="relative isolate overflow-hidden rounded-2xl text-white px-6 sm:px-8 md:px-10 py-7 sm:py-9 text-center"
+            className="relative isolate overflow-hidden rounded-2xl text-white px-6 sm:px-8 md:px-10 py-7 sm:py-9 text-center shadow-[0_8px_30px_rgba(15,23,42,0.18)]"
             style={{
               background:
                 'linear-gradient(160deg, #1c2030 0%, #0e1424 60%, #050912 100%)',
             }}
           >
-            {/* USMLE watermark — subtle background brand mark */}
+            {/* USMLE background image — full cover */}
             <Image
               src="/usmle-logo.png"
               alt=""
-              width={520}
-              height={520}
+              fill
+              priority={false}
+              sizes="(min-width: 768px) 672px, 100vw"
               aria-hidden="true"
-              className="pointer-events-none select-none absolute -right-12 sm:-right-10 top-1/2 -translate-y-1/2 w-[260px] sm:w-[300px] md:w-[340px] h-auto opacity-[0.07] sm:opacity-[0.08] mix-blend-screen -z-10"
+              className="pointer-events-none select-none object-cover object-center opacity-25 sm:opacity-30 -z-10"
             />
-            {/* Soft radial glow to lift the content above the watermark */}
+            {/* Dark gradient overlay for text contrast */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_left,rgba(0,0,0,0.55),transparent_70%)]"
+              className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-black/70 via-black/55 to-black/75"
+            />
+            {/* Soft inner vignette for premium depth */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.45)_100%)]"
             />
 
             <div className="relative">
               {/* USMLE logo lockup */}
               <div className="flex items-center justify-center gap-2">
                 <USMLEEmblem size={22} />
-                <span className="font-display font-extrabold tracking-tight text-white text-[18px] sm:text-[20px]">
+                <span className="font-display font-extrabold tracking-tight text-white text-[18px] sm:text-[20px] drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
                   USMLE
                 </span>
               </div>
 
-              <h3 className="mt-4 font-display font-extrabold leading-snug text-white text-[18px] sm:text-[22px] md:text-[24px]">
+              <h3 className="mt-4 font-display font-extrabold leading-snug text-white text-[18px] sm:text-[22px] md:text-[24px] drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)]">
                 All Your USMLE Resources in One Platform
               </h3>
 
-              <p className="mt-3 text-[12.5px] sm:text-[13.5px] text-gray-300 leading-relaxed max-w-md mx-auto">
+              <p className="mt-3 text-[12.5px] sm:text-[13.5px] text-gray-100 leading-relaxed max-w-md mx-auto drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]">
                 Get access to all USMLE resources&mdash;from high-yield QBanks
                 and self-assessments to premium video lectures&mdash;all under a
                 single subscription.
@@ -111,7 +117,7 @@ export default function DarkFeatureCards() {
                 {usmleBullets.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2.5 text-[12.5px] sm:text-[13.5px] text-gray-200 leading-snug"
+                    className="flex items-start gap-2.5 text-[12.5px] sm:text-[13.5px] text-gray-100 leading-snug drop-shadow-[0_1px_2px_rgba(0,0,0,0.45)]"
                   >
                     <Check
                       size={16}
