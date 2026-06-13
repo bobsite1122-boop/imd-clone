@@ -80,8 +80,9 @@ export default function FAQContactLinks({
           <a
             key={link.label}
             href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(link.label === 'Email'
+              ? {}
+              : { target: '_blank', rel: 'noopener noreferrer' })}
             className={`inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2 rounded-md text-[12px] sm:text-[12.5px] font-semibold transition ${link.className}`}
           >
             <link.icon />

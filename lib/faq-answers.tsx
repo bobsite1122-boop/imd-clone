@@ -11,6 +11,14 @@ export type FaqEntry = {
   order: number
 }
 
+function formatPlainAnswer(answer: string): ReactNode {
+  const paragraphs = answer.split(/\n\s*\n/).filter(Boolean)
+  if (paragraphs.length <= 1) return answer
+  return paragraphs.map((paragraph, index) => (
+    <p key={index}>{paragraph}</p>
+  ))
+}
+
 export function mapFaqAnswer(
   slug: string,
   answer: string,
@@ -41,5 +49,5 @@ export function mapFaqAnswer(
     )
   }
 
-  return answer
+  return formatPlainAnswer(answer)
 }

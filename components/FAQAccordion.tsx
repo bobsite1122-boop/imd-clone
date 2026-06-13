@@ -42,7 +42,7 @@ export default function FAQAccordion({ items, startIndex = 1 }: FAQAccordionProp
         const number = startIndex + index
         return (
           <div
-            key={index}
+            key={item.question}
             className="bg-white rounded-[4px] border border-slate-200 shadow-[0_1px_2px_rgba(15,23,42,0.04)] overflow-hidden"
           >
             <button

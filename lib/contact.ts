@@ -38,8 +38,38 @@ DEFAULT_CONTACT.whatsappExtendUrl = buildWhatsAppUrl(
   DEFAULT_CONTACT.whatsappExtendMessage,
 )
 
+export function sanitizeWhatsAppNumber(raw: string | null | undefined): string {
+  const digits = (raw ?? '').replace(/\D/g, '')
+  return digits || DEFAULT_CONTACT.whatsappNumber
+}
+
+export function sanitizeHttpUrl(
+  raw: string | null | undefined,
+  fallback: string,
+): string {
+  if (!raw) return fallback
+  try {
+    const url = new URL(raw)
+    if (url.protocol === 'http:' || url.protocol === 'https:') {
+      return url.toString()
+    }
+  } catch {
+    // fall through to fallback
+  }
+  return fallback
+}
+
+export function sanitizeEmail(raw: string | null | undefined): string {
+  const email = (raw ?? '').trim()
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return DEFAULT_CONTACT.supportEmail
+  }
+  return email
+}
+
 export function buildWhatsAppUrl(number: string, message: string) {
-  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
+  const safeNumber = sanitizeWhatsAppNumber(number)
+  return `https://wa.me/${safeNumber}?text=${encodeURIComponent(message)}`
 }
 
 function fromSiteSettings(settings: {
@@ -50,7 +80,7 @@ function fromSiteSettings(settings: {
   facebookUrl: string | null
   supportEmail: string | null
 }): ContactSettings {
-  const whatsappNumber = settings.whatsappNumber ?? DEFAULT_CONTACT.whatsappNumber
+  const whatsappNumber = sanitizeWhatsAppNumber(settings.whatsappNumber)
   const whatsappDefaultMessage = DEFAULT_CONTACT.whatsappDefaultMessage
   const whatsappExtendMessage = DEFAULT_CONTACT.whatsappExtendMessage
 
@@ -60,11 +90,20 @@ function fromSiteSettings(settings: {
     whatsappExtendMessage,
     whatsappUrl: buildWhatsAppUrl(whatsappNumber, whatsappDefaultMessage),
     whatsappExtendUrl: buildWhatsAppUrl(whatsappNumber, whatsappExtendMessage),
-    telegramUrl: settings.telegramChannelUrl ?? DEFAULT_CONTACT.telegramUrl,
-    instagramUrl: settings.instagramUrl ?? DEFAULT_CONTACT.instagramUrl,
-    youtubeUrl: settings.youtubeUrl ?? DEFAULT_CONTACT.youtubeUrl,
-    facebookUrl: settings.facebookUrl ?? DEFAULT_CONTACT.facebookUrl,
-    supportEmail: settings.supportEmail ?? DEFAULT_CONTACT.supportEmail,
+    telegramUrl: sanitizeHttpUrl(
+      settings.telegramChannelUrl,
+      DEFAULT_CONTACT.telegramUrl,
+    ),
+    instagramUrl: sanitizeHttpUrl(
+      settings.instagramUrl,
+      DEFAULT_CONTACT.instagramUrl,
+    ),
+    youtubeUrl: sanitizeHttpUrl(settings.youtubeUrl, DEFAULT_CONTACT.youtubeUrl),
+    facebookUrl: sanitizeHttpUrl(
+      settings.facebookUrl,
+      DEFAULT_CONTACT.facebookUrl,
+    ),
+    supportEmail: sanitizeEmail(settings.supportEmail),
   }
 }
 
@@ -77,22 +116,3 @@ export const getContactSettings = cache(async (): Promise<ContactSettings> => {
     return DEFAULT_CONTACT
   }
 })
-
-export function whatsAppUrl(
-  message: string = DEFAULT_CONTACT.whatsappDefaultMessage,
-  number: string = DEFAULT_CONTACT.whatsappNumber,
-) {
-  return buildWhatsAppUrl(number, message)
-}
-
-// Backward-compatible static exports for modules not yet migrated.
-export const WHATSAPP_NUMBER = DEFAULT_CONTACT.whatsappNumber
-export const WHATSAPP_DEFAULT_MESSAGE = DEFAULT_CONTACT.whatsappDefaultMessage
-export const WHATSAPP_EXTEND_MESSAGE = DEFAULT_CONTACT.whatsappExtendMessage
-export const WHATSAPP_URL = DEFAULT_CONTACT.whatsappUrl
-export const WHATSAPP_EXTEND_URL = DEFAULT_CONTACT.whatsappExtendUrl
-export const TELEGRAM_URL = DEFAULT_CONTACT.telegramUrl
-export const INSTAGRAM_URL = DEFAULT_CONTACT.instagramUrl
-export const YOUTUBE_URL = DEFAULT_CONTACT.youtubeUrl
-export const FACEBOOK_URL = DEFAULT_CONTACT.facebookUrl
-export const SUPPORT_EMAIL = DEFAULT_CONTACT.supportEmail

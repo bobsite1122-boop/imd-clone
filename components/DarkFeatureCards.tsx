@@ -30,25 +30,25 @@ const platforms = [
   {
     id: 'android',
     label: 'Android',
-    src: '/web-required-images/android.svg',
+    src: '/android.svg',
     invert: true,
   },
   {
     id: 'apple',
     label: 'Apple iOS',
-    src: '/web-required-images/apple.svg',
+    src: '/apple.svg',
     invert: true,
   },
   {
     id: 'macos',
     label: 'macOS',
-    src: '/web-required-images/macos.svg',
+    src: '/macos.svg',
     invert: false,
   },
   {
     id: 'windows',
     label: 'Windows',
-    src: '/web-required-images/windows.svg',
+    src: '/windows.svg',
     invert: true,
   },
 ] as const

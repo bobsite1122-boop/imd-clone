@@ -8,47 +8,23 @@ function isKeystaticRoute(pathname: string) {
   )
 }
 
-function unauthorized() {
-  return new NextResponse('Authentication required', {
-    status: 401,
-    headers: { 'WWW-Authenticate': 'Basic realm="Keystatic Admin"' },
-  })
+function isKeystaticConfigured() {
+  return Boolean(
+    process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
+      process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
+      process.env.KEYSTATIC_SECRET &&
+      process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG,
+  )
 }
 
 export function middleware(request: NextRequest) {
-  if (process.env.NODE_ENV !== 'production') {
-    return NextResponse.next()
-  }
-
   const { pathname } = request.nextUrl
   if (!isKeystaticRoute(pathname)) {
     return NextResponse.next()
   }
 
-  const password = process.env.KEYSTATIC_ADMIN_PASSWORD
-  if (!password) {
+  if (process.env.NODE_ENV === 'production' && !isKeystaticConfigured()) {
     return new NextResponse('Not Found', { status: 404 })
-  }
-
-  const authHeader = request.headers.get('authorization')
-  if (!authHeader?.startsWith('Basic ')) {
-    return unauthorized()
-  }
-
-  const encoded = authHeader.slice('Basic '.length)
-  let decoded = ''
-  try {
-    decoded = atob(encoded)
-  } catch {
-    return unauthorized()
-  }
-
-  const separatorIndex = decoded.indexOf(':')
-  const passwordAttempt =
-    separatorIndex === -1 ? decoded : decoded.slice(separatorIndex + 1)
-
-  if (passwordAttempt !== password) {
-    return unauthorized()
   }
 
   return NextResponse.next()
