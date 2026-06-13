@@ -53,7 +53,7 @@ export default function ContactSection() {
 
         {/* Disclaimer */}
         <p className="text-xs text-gray-500 mt-8">
-          ⚠️ These are our only official handles. Beware of fake accounts.
+          Disclaimer: These are Our Only Contact Channels.
         </p>
 
       </div>

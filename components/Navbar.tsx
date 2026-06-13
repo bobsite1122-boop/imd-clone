@@ -31,12 +31,12 @@ export default function Navbar() {
         {/* Brand: logo + site name */}
         <Link
           href="/"
-          aria-label="IMD App PK — Home"
+          aria-label="iMD App PK — Home"
           className="group flex items-center gap-3 sm:gap-3.5 shrink-0 min-w-0"
         >
           <Image
             src="/logo.png"
-            alt="IMD App PK"
+            alt="iMD App PK"
             width={96}
             height={96}
             priority
@@ -44,7 +44,7 @@ export default function Navbar() {
           />
           <span className="flex flex-col leading-none min-w-0">
             <span className="font-display font-extrabold tracking-tight text-white text-[17px] sm:text-[19px] md:text-[21px] lg:text-[22px] truncate">
-              IMD App <span className="text-white/90">PK</span>
+              iMD App <span className="text-white/90">PK</span>
             </span>
             <span className="hidden sm:inline-block mt-1 text-[10.5px] md:text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-100/85 truncate">
               Medical Resources

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'iMD App QBanks, Databases and Resources - IMD App PK',
+  title: 'iMD App QBanks, Databases and Resources - iMD App PK',
   description:
     '45,000+ premium medical resources including QBanks, clinical references, drug references, video lectures, and books — all in a single iMD App subscription.',
 }

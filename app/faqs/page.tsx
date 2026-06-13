@@ -4,21 +4,21 @@ import FAQAccordion, { type FAQItem } from '@/components/FAQAccordion'
 import FAQContactLinks from '@/components/FAQContactLinks'
 
 export const metadata: Metadata = {
-  title: 'FAQs - IMD App PK',
+  title: 'FAQs - iMD App PK',
   description:
-    'Find answers to common questions about IMD Subscription, the IMD App, payments, and more.',
+    'Find answers to common questions about iMD Subscription, the iMD App, payments, and more.',
 }
 
 const subscriptionFAQs: FAQItem[] = [
   {
-    question: 'What is the IMD Subscription?',
+    question: 'What is the iMD Subscription?',
     answer: (
       <>
         <p>
-          An IMD Subscription gives you full access to all premium medical
-          databases, question banks, books, and lectures inside the IMD App for
-          a selected duration (6 months, 1 year, or 2 years). It includes the
-          following resources:
+          An iMD Subscription gives you full access to all premium medical
+          resources, including premium question banks, clinical references,
+          books, lectures, and many more, for your selected subscription period
+          (6 months, 1 year, or 2 years).
         </p>
         <Link
           href="/databases"
@@ -30,7 +30,7 @@ const subscriptionFAQs: FAQItem[] = [
     ),
   },
   {
-    question: 'How do I purchase an IMD Subscription?',
+    question: 'How do I purchase an iMD Subscription?',
     answer: (
       <>
         <p className="font-semibold text-slate-700">
@@ -53,17 +53,12 @@ const subscriptionFAQs: FAQItem[] = [
       'We accept international cards, local transfers in supported countries, and digital wallets. Contact us and tell us your country name and we’ll provide you with a suitable payment method.',
   },
   {
-    question: 'Can I extend or renew my IMD Subscription?',
+    question: 'Can I extend or renew my iMD Subscription?',
     answer:
       'Yes. You can renew anytime before or after your subscription expires — all your notes and bookmarks remain synced when you reactivate your account. Contact us now to extend your existing subscription via WhatsApp.',
   },
   {
-    question: 'Is the IMD Subscription refundable?',
-    answer:
-      'There is a 7-day money back guarantee if the app is not as described. Contact our support team via WhatsApp for a refund.',
-  },
-  {
-    question: 'Does the IMD Subscription include updates?',
+    question: 'Does the iMD Subscription include updates?',
     answer:
       'Yes, all active subscribers automatically receive database and content updates without extra charges during their subscription period.',
   },
@@ -75,15 +70,15 @@ const subscriptionFAQs: FAQItem[] = [
   {
     question: 'Is there a free trial available?',
     answer:
-      'We currently don’t offer a free trial. You can ask anything by getting in touch via WhatsApp, Telegram, or Email.',
+      'We currently don’t offer a free trial. You can ask anything by getting in touch via WhatsApp, Instagram, Telegram, or Email.',
   },
   {
-    question: 'What happens when my IMD Subscription expires?',
+    question: 'What happens when my iMD Subscription expires?',
     answer:
       'Once expired, access pauses until renewal. Your account data remains saved for 30 days after expiration.',
   },
   {
-    question: 'Can I share my IMD Subscription with others?',
+    question: 'Can I share my iMD Subscription with others?',
     answer:
       'No, sharing accounts violates our usage policy. Repeated violations may result in temporary or permanent bans.',
   },
@@ -91,49 +86,49 @@ const subscriptionFAQs: FAQItem[] = [
 
 const appFAQs: FAQItem[] = [
   {
-    question: 'What is the IMD App?',
+    question: 'What is the iMD App?',
     answer:
-      'The IMD App is an all-in-one digital platform providing premium medical databases, question banks, and textbooks for medical students and professionals. Made for exams like USMLE, AMC, PLAB, SMLE, etc.',
+      'The iMD App is an all-in-one digital platform providing premium medical databases, question banks, and textbooks for medical students and professionals. Made for exams like USMLE, AMC, PLAB, SMLE, etc.',
   },
   {
-    question: 'How do I download the IMD App?',
+    question: 'How do I download the iMD App?',
     answer:
       'Follow the steps on the installation page to install the app.',
   },
   {
-    question: 'On which devices/platforms is IMD App Available?',
+    question: 'On which devices/platforms is iMD App Available?',
     answer:
       'iOS, MacOS, Windows, and Android. Check the installation instructions on the download page.',
   },
   {
-    question: 'Can I use the IMD App on multiple devices?',
+    question: 'Can I use the iMD App on multiple devices?',
     answer:
       'Your subscription is linked to one primary device. Logging in elsewhere will log out the first device.',
   },
   {
-    question: 'How much space does the IMD App require?',
+    question: 'How much space does the iMD App require?',
     answer:
       'The app is lightweight (<200 MB). Databases and textbooks can require 5–25 GB.',
   },
   {
-    question: 'What content is available inside the IMD App?',
+    question: 'What content is available inside the iMD App?',
     answer:
       'Verified medical databases, question banks (QBanks), video lectures, and PDF textbooks covering all major subjects. Check Resources Page for full list.',
   },
   {
-    question: 'Is an internet connection required to use the IMD App?',
+    question: 'Is an internet connection required to use the iMD App?',
     answer:
       'Most features work offline. Internet is only needed for activation, syncing, and updates.',
   },
   {
-    question: 'How often is the IMD App updated?',
+    question: 'How often is the iMD App updated?',
     answer:
       'We release regular updates. Notifications appear inside the app when updates are available.',
   },
   {
     question: 'I’m facing an issue with the app — what should I do?',
     answer:
-      'Contact the IMD Help team via WhatsApp, Telegram, or Email. Include your OS, error message, and screenshot. We will reply asap.',
+      'Contact the iMD Help team via WhatsApp, Instagram, Telegram, or Email. Include your OS, error message, and screenshot. We will reply asap.',
   },
 ]
 
@@ -164,7 +159,7 @@ export default function FAQsPage() {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 sm:mt-4 text-slate-500 text-[13px] sm:text-sm max-w-[420px] mx-auto leading-relaxed">
-            Find answers to common questions about IMD Subscription, the IMD
+            Find answers to common questions about iMD Subscription, the iMD
             App, payments, and more.
           </p>
         </div>
@@ -176,8 +171,8 @@ export default function FAQsPage() {
           <SectionTitle>Subscription</SectionTitle>
           <FAQAccordion items={subscriptionFAQs} startIndex={1} />
 
-          <SectionTitle>IMD App</SectionTitle>
-          <FAQAccordion items={appFAQs} startIndex={11} />
+          <SectionTitle>iMD App</SectionTitle>
+          <FAQAccordion items={appFAQs} startIndex={10} />
         </div>
       </section>
     </div>

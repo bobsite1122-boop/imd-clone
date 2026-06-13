@@ -4,7 +4,7 @@ import { type ReactNode } from 'react'
 import { Download, PlayCircle, ExternalLink, Smartphone, Monitor, Apple } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Download & Install iMD App - IMD App PK',
+  title: 'Download & Install iMD App - iMD App PK',
   description:
     'Step-by-step instructions to download and install the iMD App on Android, Windows, iPhone, iPad and macOS. Get the APK, video tutorials and activation portal.',
   keywords: [

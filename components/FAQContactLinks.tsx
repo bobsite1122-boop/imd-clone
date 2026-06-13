@@ -3,12 +3,7 @@ import {
   SUPPORT_EMAIL,
   TELEGRAM_URL,
   WHATSAPP_URL,
-  whatsAppUrl,
 } from '@/lib/contact'
-
-const GET_APP_URL = whatsAppUrl(
-  "Hi! I'd like to get the iMD App. Please share details and pricing.",
-)
 
 function WhatsAppIcon() {
   return (
@@ -94,7 +89,7 @@ export default function FAQContactLinks() {
         ))}
       </div>
       <a
-        href={GET_APP_URL}
+        href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 w-full min-h-[44px] px-5 py-2.5 rounded-md bg-[#0e3b77] hover:bg-[#0a2d5e] text-white text-[13px] sm:text-[14px] font-semibold transition-colors"

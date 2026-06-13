@@ -140,7 +140,7 @@ export default function DarkFeatureCards() {
             }}
           >
             <h3 className="font-display font-extrabold leading-snug text-white text-[18px] sm:text-[22px] md:text-[24px]">
-              Access IMD App on Any Device
+              Access iMD App on Any Device
             </h3>
             <p className="mt-2 text-[12.5px] sm:text-[13.5px] text-blue-100 leading-relaxed max-w-md">
               Use your account on any device and switch seamlessly between

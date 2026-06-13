@@ -1,9 +1,5 @@
 import Link from 'next/link'
-import { whatsAppUrl } from '@/lib/contact'
-
-const WHATSAPP_URL = whatsAppUrl(
-  "Hi! I'd like to get the iMD App. Please share details and pricing.",
-)
+import { WHATSAPP_URL } from '@/lib/contact'
 
 function WhatsAppGlyph({ size = 18 }: { size?: number }) {
   return (
@@ -43,7 +39,7 @@ export default function Hero() {
           <div className="flex justify-center">
             <span className="inline-flex items-center gap-2.5 rounded-full border border-white/35 bg-white/15 backdrop-blur-sm px-5 sm:px-6 py-2.5 sm:py-3 font-display text-[16px] sm:text-[18px] md:text-[19px] lg:text-[20px] font-extrabold tracking-[0.1em] uppercase text-white shadow-[0_2px_12px_rgba(0,0,0,0.22)]">
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.6)]" />
-              IMD App
+              iMD App
             </span>
           </div>
 
@@ -97,7 +93,7 @@ export default function Hero() {
               className="inline-flex items-center justify-center gap-2 bg-[#1a5298] hover:bg-[#1d5fae] text-white font-semibold text-[15px] sm:text-base px-7 sm:px-9 py-3.5 sm:py-4 rounded-2xl shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition-colors min-h-[52px]"
             >
               <WhatsAppGlyph size={20} />
-              Get IMD App now
+              Get iMD App now
             </Link>
           </div>
 

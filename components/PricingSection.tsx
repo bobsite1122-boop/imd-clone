@@ -1,13 +1,11 @@
 import { Check } from 'lucide-react'
-import { WHATSAPP_NUMBER } from '@/lib/contact'
+import { WHATSAPP_URL } from '@/lib/contact'
 
 type Plan = {
   id: number
   name: string
   price: string
   days: string
-  subscribeLink: string
-  extendLink: string
 }
 
 const plans: Plan[] = [
@@ -16,30 +14,18 @@ const plans: Plan[] = [
     name: '6 Months Subscription',
     price: '$50',
     days: '180 Days',
-    subscribeLink:
-      `https://wa.me/${WHATSAPP_NUMBER}?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%206%20months%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A`,
-    extendLink:
-      `https://wa.me/${WHATSAPP_NUMBER}?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%206%20months%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A`,
   },
   {
     id: 2,
     name: '1-Year Subscription',
     price: '$75',
     days: '365 Days',
-    subscribeLink:
-      `https://wa.me/${WHATSAPP_NUMBER}?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%201%20year%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A`,
-    extendLink:
-      `https://wa.me/${WHATSAPP_NUMBER}?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%201%20year%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A`,
   },
   {
     id: 3,
     name: '2-Year Subscription',
     price: '$150',
     days: '730 Days',
-    subscribeLink:
-      `https://wa.me/${WHATSAPP_NUMBER}?text=*Please%20fill%20following%20details%20for%20Subscribing%3A-*%20%0ADesired%20Duration%3A%202%20years%0APurpose%3A%20%0ADesired%20Mode%20of%20payment%3A%20%0AEmail%3A%20%0ADesired%20Username%3A%20%0ADesired%20Password%3A`,
-    extendLink:
-      `https://wa.me/${WHATSAPP_NUMBER}?text=%E2%80%8E%20*Please%20fill%20following%20details%20for%20Extension%3A-*%0ADesired%20Duration%3A%202%20years%0ADesired%20Mode%20of%20payment%3A%20%0AiMD%20Username%3A`,
   },
 ]
 
@@ -118,7 +104,7 @@ export default function PricingSection() {
                 {/* Buttons */}
                 <div className="flex flex-col gap-2.5 mt-auto">
                   <a
-                    href={plan.subscribeLink}
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
@@ -127,7 +113,7 @@ export default function PricingSection() {
                     Subscribe Now
                   </a>
                   <a
-                    href={plan.extendLink}
+                    href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"

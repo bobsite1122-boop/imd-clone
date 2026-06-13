@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Mail } from 'lucide-react'
-import InstantAnchorLink from '@/components/InstantAnchorLink'
 import {
   FACEBOOK_URL,
   INSTAGRAM_URL,
@@ -13,8 +12,8 @@ import {
 
 const usefulLinks = [
   { label: 'Databases & Resources', href: '/databases' },
-  { label: 'Subscribe Now', href: '#subscribenow' },
-  { label: 'Support', href: '#support' },
+  { label: 'Subscribe Now', href: '/#subscribenow' },
+  { label: 'Support', href: '/#support' },
   { label: 'FAQs', href: '/faqs' },
   { label: 'Download/Install', href: '/install' },
 ]
@@ -81,13 +80,13 @@ export default function Footer() {
           <div>
             <Image
               src="/logo.png"
-              alt="IMD App PK"
+              alt="iMD App PK"
               width={96}
               height={96}
               className="rounded-full object-cover bg-white w-14 h-14 sm:w-16 sm:h-16"
             />
             <h3 className="text-white font-bold text-base mt-3">
-              IMD App PK
+              iMD App PK
             </h3>
             <p className="text-[13px] text-blue-200 mt-1.5 leading-relaxed max-w-xs">
               Your trusted source for medical education and exam preparation.
@@ -100,25 +99,15 @@ export default function Footer() {
               Useful Links
             </h4>
             <nav className="flex flex-col gap-1.5">
-              {usefulLinks.map((link) =>
-                link.href.startsWith('#') ? (
-                  <InstantAnchorLink
-                    key={link.href}
-                    href={link.href}
-                    className="text-[13px] text-white hover:text-blue-200 transition-colors min-h-[28px] flex items-center"
-                  >
-                    {link.label}
-                  </InstantAnchorLink>
-                ) : (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-[13px] text-white hover:text-blue-200 transition-colors min-h-[28px] flex items-center"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
+              {usefulLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-[13px] text-white hover:text-blue-200 transition-colors min-h-[28px] flex items-center"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
           </div>
 
@@ -193,7 +182,7 @@ export default function Footer() {
           </div>
 
           <p className="text-[13px] text-blue-200 mt-6">
-            Disclaimer: These are our only handles to get in contact with us.
+            Disclaimer: These are Our Only Contact Channels.
           </p>
         </div>
 
