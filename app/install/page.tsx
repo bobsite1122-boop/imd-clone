@@ -362,19 +362,13 @@ function AppleCard() {
             title="How to install iMD App on iPhone, iPad and macOS"
           />
         </div>
-        <div className="mt-4 flex flex-col sm:flex-row gap-3">
+        <div className="mt-4">
           <SecondaryButton
             href={APPLE_VIDEO_URL}
             icon={<PlayCircle size={18} aria-hidden="true" />}
           >
             Watch on YouTube
           </SecondaryButton>
-          <PrimaryButton
-            href={APPLE_PORTAL_URL}
-            icon={<ExternalLink size={18} aria-hidden="true" />}
-          >
-            Open iOS / macOS Portal
-          </PrimaryButton>
         </div>
       </div>
 

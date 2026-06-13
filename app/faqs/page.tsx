@@ -171,7 +171,6 @@ export default function FAQsPage() {
           <SectionTitle>Subscription</SectionTitle>
           <FAQAccordion items={subscriptionFAQs} startIndex={1} />
 
-          <SectionTitle>iMD App</SectionTitle>
           <FAQAccordion items={appFAQs} startIndex={10} />
         </div>
       </section>
