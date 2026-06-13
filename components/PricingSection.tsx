@@ -1,5 +1,5 @@
 import { Check } from 'lucide-react'
-import { WHATSAPP_URL } from '@/lib/contact'
+import { WHATSAPP_EXTEND_URL, WHATSAPP_URL } from '@/lib/contact'
 
 type Plan = {
   id: number
@@ -113,7 +113,7 @@ export default function PricingSection() {
                     Subscribe Now
                   </a>
                   <a
-                    href={WHATSAPP_URL}
+                    href={WHATSAPP_EXTEND_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"

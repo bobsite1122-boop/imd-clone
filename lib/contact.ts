@@ -3,7 +3,12 @@ export const WHATSAPP_NUMBER = '923329722201'
 export const WHATSAPP_DEFAULT_MESSAGE =
   "Hi! I'm interested in the iMD App subscription. Could you please share the details?"
 
+export const WHATSAPP_EXTEND_MESSAGE =
+  'Hi! I already have an iMD App subscription and would like to extend my subscription. Could you please guide me through the renewal process?'
+
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_DEFAULT_MESSAGE)}`
+
+export const WHATSAPP_EXTEND_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_EXTEND_MESSAGE)}`
 
 export const TELEGRAM_URL = 'https://t.me/imd_app_pk'
 export const INSTAGRAM_URL = 'https://www.instagram.com/imd_app_pk'
