@@ -1,18 +1,10 @@
 import { config, fields, collection, singleton } from '@keystatic/core'
 
-const githubStorageConfigured = Boolean(
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
-    process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
-    process.env.KEYSTATIC_SECRET,
-)
-
 export default config({
-  storage: githubStorageConfigured
-    ? {
-        kind: 'github',
-        repo: 'mehmoodzafarfreelancing-ai/imd-clone',
-      }
-    : { kind: 'local' },
+  storage: {
+    kind: 'github',
+    repo: 'mehmoodzafarfreelancing-ai/imd-clone',
+  },
   ui: {
     brand: { name: 'iMD App Admin' },
   },
