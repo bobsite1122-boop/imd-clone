@@ -169,9 +169,10 @@ export default function FAQsPage() {
       <section className="pb-16 sm:pb-20">
         <div className="mx-auto px-6 sm:px-8 max-w-[720px] lg:max-w-[540px] lg:px-4">
           <SectionTitle>Subscription</SectionTitle>
-          <FAQAccordion items={subscriptionFAQs} startIndex={1} />
-
-          <FAQAccordion items={appFAQs} startIndex={10} />
+          <FAQAccordion
+            items={[...subscriptionFAQs, ...appFAQs]}
+            startIndex={1}
+          />
         </div>
       </section>
     </div>

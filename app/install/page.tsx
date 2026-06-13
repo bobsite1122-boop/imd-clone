@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   ],
 }
 
-const APK_URL = 'https://sg.imedicaldoctor.net/imd192.apk'
+const APK_URL = 'https://sg.imedicaldoctor.net/imd195.apk'
 const WINDOWS_VIDEO_URL = 'https://youtu.be/_KPIHa9bCF4?si=K1iLE1EeQOKa6TnI'
 const WINDOWS_VIDEO_ID = '_KPIHa9bCF4'
 const APPLE_VIDEO_URL =
