@@ -1,9 +1,4 @@
-import {
-  INSTAGRAM_URL,
-  SUPPORT_EMAIL,
-  TELEGRAM_URL,
-  WHATSAPP_URL,
-} from '@/lib/contact'
+import type { ContactSettings } from '@/lib/contact'
 
 function WhatsAppIcon() {
   return (
@@ -40,42 +35,48 @@ function MailIcon() {
   )
 }
 
-const contactLinks = [
-  {
-    label: 'WhatsApp',
-    href: WHATSAPP_URL,
-    icon: WhatsAppIcon,
-    className: 'bg-[#25d366] hover:opacity-90 text-white',
-  },
-  {
-    label: 'Instagram',
-    href: INSTAGRAM_URL,
-    icon: InstagramIcon,
-    className:
-      'bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] hover:opacity-90 text-white',
-  },
-  {
-    label: 'Email',
-    href: `mailto:${SUPPORT_EMAIL}`,
-    icon: MailIcon,
-    className: 'bg-indigo-600 hover:opacity-90 text-white',
-  },
-  {
-    label: 'Telegram',
-    href: TELEGRAM_URL,
-    icon: TelegramIcon,
-    className: 'bg-[#229ed9] hover:opacity-90 text-white',
-  },
-] as const
+const contactLinks = (contact: ContactSettings) =>
+  [
+    {
+      label: 'WhatsApp',
+      href: contact.whatsappUrl,
+      icon: WhatsAppIcon,
+      className: 'bg-[#25d366] hover:opacity-90 text-white',
+    },
+    {
+      label: 'Instagram',
+      href: contact.instagramUrl,
+      icon: InstagramIcon,
+      className:
+        'bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] hover:opacity-90 text-white',
+    },
+    {
+      label: 'Email',
+      href: `mailto:${contact.supportEmail}`,
+      icon: MailIcon,
+      className: 'bg-indigo-600 hover:opacity-90 text-white',
+    },
+    {
+      label: 'Telegram',
+      href: contact.telegramUrl,
+      icon: TelegramIcon,
+      className: 'bg-[#229ed9] hover:opacity-90 text-white',
+    },
+  ] as const
 
-export default function FAQContactLinks() {
+export default function FAQContactLinks({
+  contact,
+}: {
+  contact: ContactSettings
+}) {
+  const links = contactLinks(contact)
   return (
     <div className="mt-4 pt-4 border-t border-slate-100 space-y-3">
       <p className="text-[12px] sm:text-[12.5px] font-semibold text-[#0e3b77]">
         Quick contact options
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-        {contactLinks.map((link) => (
+        {links.map((link) => (
           <a
             key={link.label}
             href={link.href}
@@ -89,7 +90,7 @@ export default function FAQContactLinks() {
         ))}
       </div>
       <a
-        href={WHATSAPP_URL}
+        href={contact.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 w-full min-h-[44px] px-5 py-2.5 rounded-md bg-[#0e3b77] hover:bg-[#0a2d5e] text-white text-[13px] sm:text-[14px] font-semibold transition-colors"

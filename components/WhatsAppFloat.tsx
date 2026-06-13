@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { WHATSAPP_URL } from '@/lib/contact'
+import { getContactSettings } from '@/lib/contact'
 
 function WhatsAppGlyph({ size = 28 }: { size?: number }) {
   return (
@@ -15,14 +15,16 @@ function WhatsAppGlyph({ size = 28 }: { size?: number }) {
   )
 }
 
-export default function WhatsAppFloat() {
+export default async function WhatsAppFloat() {
+  const contact = await getContactSettings()
+
   return (
     <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2">
       <span className="hidden sm:inline-flex items-center bg-white text-slate-800 text-xs font-medium rounded-full px-3 py-1.5 shadow-lg">
         Need Help? Chat with us
       </span>
       <Link
-        href={WHATSAPP_URL}
+        href={contact.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"

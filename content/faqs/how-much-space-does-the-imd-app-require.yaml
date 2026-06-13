@@ -1,0 +1,6 @@
+question: How much space does the iMD App require?
+answer: >-
+  The app is lightweight (<200 MB). Databases and textbooks can require 5–25
+  GB.
+category: app
+order: 14

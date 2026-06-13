@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { WHATSAPP_URL } from '@/lib/contact'
+import { getContactSettings } from '@/lib/contact'
 
 function WhatsAppGlyph({ size = 18 }: { size?: number }) {
   return (
@@ -23,7 +23,9 @@ const trustItems = [
   { icon: '💻', label: 'Access Anywhere, on Any Device' },
 ] as const
 
-export default function Hero() {
+export default async function Hero() {
+  const contact = await getContactSettings()
+
   return (
     <section className="relative bg-[#0e3b77] text-white overflow-hidden">
       {/* Soft ambient glow for depth (decorative only) */}
@@ -87,7 +89,7 @@ export default function Hero() {
           {/* CTA */}
           <div className="mt-5 sm:mt-6">
             <Link
-              href={WHATSAPP_URL}
+              href={contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[#1a5298] hover:bg-[#1d5fae] text-white font-semibold text-[15px] sm:text-base px-7 sm:px-9 py-3.5 sm:py-4 rounded-2xl shadow-[0_6px_20px_rgba(0,0,0,0.25)] transition-colors min-h-[52px]"

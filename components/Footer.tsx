@@ -1,14 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Mail } from 'lucide-react'
-import {
-  FACEBOOK_URL,
-  INSTAGRAM_URL,
-  SUPPORT_EMAIL,
-  TELEGRAM_URL,
-  WHATSAPP_URL,
-  YOUTUBE_URL,
-} from '@/lib/contact'
+import { getContactSettings } from '@/lib/contact'
 
 const usefulLinks = [
   { label: 'Databases & Resources', href: '/databases' },
@@ -60,15 +53,18 @@ function FacebookIcon() {
   )
 }
 
-const socials = [
-  { label: 'YouTube', href: YOUTUBE_URL, Icon: YouTubeIcon, bg: 'bg-[#ff0000]' },
-  { label: 'Telegram', href: TELEGRAM_URL, Icon: () => <TelegramIcon size={18} />, bg: 'bg-[#229ed9]' },
-  { label: 'Instagram', href: INSTAGRAM_URL, Icon: InstagramIcon, bg: 'bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]' },
-  { label: 'WhatsApp', href: WHATSAPP_URL, Icon: () => <WhatsAppIcon size={18} />, bg: 'bg-[#25d366]' },
-  { label: 'Facebook', href: FACEBOOK_URL, Icon: FacebookIcon, bg: 'bg-[#1877f2]' },
-]
+const socials = (contact: Awaited<ReturnType<typeof getContactSettings>>) =>
+  [
+    { label: 'YouTube', href: contact.youtubeUrl, Icon: YouTubeIcon, bg: 'bg-[#ff0000]' },
+    { label: 'Telegram', href: contact.telegramUrl, Icon: () => <TelegramIcon size={18} />, bg: 'bg-[#229ed9]' },
+    { label: 'Instagram', href: contact.instagramUrl, Icon: InstagramIcon, bg: 'bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af]' },
+    { label: 'WhatsApp', href: contact.whatsappUrl, Icon: () => <WhatsAppIcon size={18} />, bg: 'bg-[#25d366]' },
+    { label: 'Facebook', href: contact.facebookUrl, Icon: FacebookIcon, bg: 'bg-[#1877f2]' },
+  ]
 
-export default function Footer() {
+export default async function Footer() {
+  const contact = await getContactSettings()
+
   return (
     <footer className="bg-[#0e3b77] pt-10 pb-8 text-white">
       <div className="container-main">
@@ -117,7 +113,7 @@ export default function Footer() {
               Follow us
             </h4>
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              {socials.map((social) => (
+              {socials(contact).map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
@@ -144,7 +140,7 @@ export default function Footer() {
 
             {/* Telegram */}
             <a
-              href={TELEGRAM_URL}
+              href={contact.telegramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#229ed9] hover:bg-[#1e8fc4] text-white rounded-[2rem] w-full lg:w-[170px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"
@@ -157,18 +153,18 @@ export default function Footer() {
 
             {/* Email */}
             <a
-              href={`mailto:${SUPPORT_EMAIL}`}
+              href={`mailto:${contact.supportEmail}`}
               className="bg-white text-slate-800 hover:bg-gray-100 rounded-[2rem] w-full lg:w-[200px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"
             >
               <Mail size={20} aria-hidden="true" />
               <span className="text-[11px] font-medium leading-tight text-center">
-                Email us at<br />{SUPPORT_EMAIL}
+                Email us at<br />{contact.supportEmail}
               </span>
             </a>
 
             {/* WhatsApp */}
             <a
-              href={WHATSAPP_URL}
+              href={contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25d366] hover:bg-[#1ebe5d] text-white rounded-[2rem] w-full lg:w-[170px] min-h-[64px] lg:min-h-[80px] flex flex-col items-center justify-center gap-1 transition-colors px-4 py-3"

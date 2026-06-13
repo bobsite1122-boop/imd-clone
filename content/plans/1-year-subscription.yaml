@@ -1,0 +1,15 @@
+name: 1-Year Subscription
+price: $75
+days: 365 Days
+isPopular: false
+features:
+  - Full Access For 365 Days
+  - International IP Use
+  - Unlimited Access to All Databases
+  - Unlock 45,000+ Premium Resources
+subscribeWhatsappText: >-
+  Hi! I'm interested in the iMD App subscription. Could you please share the
+  details?
+extendWhatsappText: >-
+  Hi! I already have an iMD App subscription and would like to extend my
+  subscription. Could you please guide me through the renewal process?

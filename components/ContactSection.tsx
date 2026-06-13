@@ -1,28 +1,30 @@
 import { Send, MessageCircle, Mail } from 'lucide-react'
-import { SUPPORT_EMAIL, TELEGRAM_URL, WHATSAPP_URL } from '@/lib/contact'
+import { getContactSettings } from '@/lib/contact'
 
-const contacts = [
-  {
-    label: 'Message on Telegram',
-    href: TELEGRAM_URL,
-    bg: 'bg-[#2aabee] hover:opacity-90',
-    icon: Send,
-  },
-  {
-    label: 'Contact on WhatsApp',
-    href: WHATSAPP_URL,
-    bg: 'bg-[#25d366] hover:opacity-90',
-    icon: MessageCircle,
-  },
-  {
-    label: 'Email Us',
-    href: `mailto:${SUPPORT_EMAIL}`,
-    bg: 'bg-indigo-600 hover:opacity-90',
-    icon: Mail,
-  },
-]
+export default async function ContactSection() {
+  const contact = await getContactSettings()
 
-export default function ContactSection() {
+  const contacts = [
+    {
+      label: 'Message on Telegram',
+      href: contact.telegramUrl,
+      bg: 'bg-[#2aabee] hover:opacity-90',
+      icon: Send,
+    },
+    {
+      label: 'Contact on WhatsApp',
+      href: contact.whatsappUrl,
+      bg: 'bg-[#25d366] hover:opacity-90',
+      icon: MessageCircle,
+    },
+    {
+      label: 'Email Us',
+      href: `mailto:${contact.supportEmail}`,
+      bg: 'bg-indigo-600 hover:opacity-90',
+      icon: Mail,
+    },
+  ]
+
   return (
     <section id="support" className="bg-[#1a1a2e] section-pad">
       <div className="container-main text-center">
