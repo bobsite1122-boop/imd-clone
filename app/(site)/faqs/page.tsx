@@ -33,6 +33,8 @@ export default async function FAQsPage() {
     answer: mapFaqAnswer(faq.slug, faq.answer, contact),
   }))
 
+  const allItems = [...subscriptionItems, ...appItems]
+
   return (
     <div className="bg-[#f3f6fb]">
       <section className="bg-[#eaf2fb] py-10 sm:py-12 lg:py-14 text-center">
@@ -58,12 +60,7 @@ export default async function FAQsPage() {
       <section className="pb-16 sm:pb-20">
         <div className="mx-auto px-6 sm:px-8 max-w-[720px] lg:max-w-[540px] lg:px-4">
           <SectionTitle>Subscription</SectionTitle>
-          <FAQAccordion items={subscriptionItems} startIndex={1} />
-          <SectionTitle>The App</SectionTitle>
-          <FAQAccordion
-            items={appItems}
-            startIndex={subscriptionItems.length + 1}
-          />
+          <FAQAccordion items={allItems} startIndex={1} />
         </div>
       </section>
     </div>

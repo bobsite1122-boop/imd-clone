@@ -39,9 +39,9 @@ export default async function Hero() {
 
           {/* Eyebrow — brand pill */}
           <div className="flex justify-center">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-white/35 bg-white/15 backdrop-blur-sm px-5 sm:px-6 py-2.5 sm:py-3 font-display text-[16px] sm:text-[18px] md:text-[19px] lg:text-[20px] font-extrabold tracking-[0.1em] uppercase text-white shadow-[0_2px_12px_rgba(0,0,0,0.22)]">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-white/35 bg-white/15 backdrop-blur-sm px-5 sm:px-6 py-2.5 sm:py-3 font-display text-[16px] sm:text-[18px] md:text-[19px] lg:text-[20px] font-extrabold tracking-[0.1em] text-white shadow-[0_2px_12px_rgba(0,0,0,0.22)]">
               <span aria-hidden="true" className="h-2 w-2 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.6)]" />
-              iMD App
+              iMD APP
             </span>
           </div>
 
