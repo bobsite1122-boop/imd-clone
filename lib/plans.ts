@@ -1,6 +1,5 @@
 import { cache } from 'react'
-import { reader } from '@/lib/reader'
-import { buildWhatsAppUrl, getContactSettings } from '@/lib/contact'
+import { buildWhatsAppUrl } from '@/lib/contact'
 
 export type Plan = {
   slug: string
@@ -13,13 +12,7 @@ export type Plan = {
   extendWhatsappUrl: string
 }
 
-const PLAN_SLUG_ORDER = [
-  '6-months-subscription',
-  '1-year-subscription',
-  '2-year-subscription',
-] as const
-
-const FALLBACK_PLANS: Plan[] = [
+const PLANS: Plan[] = [
   {
     slug: '6-months-subscription',
     name: '6 Months Subscription',
@@ -85,43 +78,4 @@ const FALLBACK_PLANS: Plan[] = [
   },
 ]
 
-function sortPlans(plans: Plan[]) {
-  return [...plans].sort((a, b) => {
-    const aIndex = PLAN_SLUG_ORDER.indexOf(
-      a.slug as (typeof PLAN_SLUG_ORDER)[number],
-    )
-    const bIndex = PLAN_SLUG_ORDER.indexOf(
-      b.slug as (typeof PLAN_SLUG_ORDER)[number],
-    )
-    return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex)
-  })
-}
-
-export const getPlans = cache(async (): Promise<Plan[]> => {
-  try {
-    const contact = await getContactSettings()
-    const entries = await reader.collections.plans.all()
-    if (entries.length === 0) return FALLBACK_PLANS
-
-    const plans = entries.map(({ slug, entry }) => ({
-      slug,
-      name: entry.name,
-      price: entry.price,
-      days: entry.days,
-      isPopular: entry.isPopular,
-      features: entry.features,
-      subscribeWhatsappUrl: buildWhatsAppUrl(
-        contact.whatsappNumber,
-        entry.subscribeWhatsappText,
-      ),
-      extendWhatsappUrl: buildWhatsAppUrl(
-        contact.whatsappNumber,
-        entry.extendWhatsappText,
-      ),
-    }))
-
-    return sortPlans(plans)
-  } catch {
-    return FALLBACK_PLANS
-  }
-})
+export const getPlans = cache(async (): Promise<Plan[]> => PLANS)

@@ -1,9 +1,0 @@
-question: How do I transfer my subscription to another device?
-answer: >-
-  Enter your Username/Password on the new device to login, but your data will
-  not be transferred. Use the backup feature to copy your progress. Backup the
-  data in previous device, install the same QBank or database on the new device,
-  and manually restore the backup by entering a specific code or selecting a
-  recent backup from the list to restore progress, highlights and favorites.
-category: subscription
-order: 6

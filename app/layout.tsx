@@ -14,11 +14,32 @@ const sora = Sora({
   variable: '--font-display',
 })
 
+const siteTitle = 'iMD App PK | Medical Resources'
+const siteDescription =
+  "Pakistan's premier medical education subscription platform. Access 45,000+ medical resources."
+
 export const metadata: Metadata = {
-  title: 'iMD App PK | Medical Resources',
-  description:
-    "Pakistan's premier medical education subscription platform. Access 45,000+ medical resources.",
-  keywords: ['medical app', 'USMLE', 'medical subscription', 'Pakistan', 'medical resources'],
+  title: siteTitle,
+  description: siteDescription,
+  keywords: [
+    'medical app',
+    'USMLE',
+    'medical subscription',
+    'Pakistan',
+    'medical resources',
+  ],
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    type: 'website',
+    locale: 'en_PK',
+    siteName: 'iMD App PK',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+  },
 }
 
 export default function RootLayout({

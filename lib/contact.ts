@@ -1,5 +1,4 @@
 import { cache } from 'react'
-import { reader } from '@/lib/reader'
 
 export type ContactSettings = {
   whatsappNumber: string
@@ -38,81 +37,11 @@ DEFAULT_CONTACT.whatsappExtendUrl = buildWhatsAppUrl(
   DEFAULT_CONTACT.whatsappExtendMessage,
 )
 
-export function sanitizeWhatsAppNumber(raw: string | null | undefined): string {
-  const digits = (raw ?? '').replace(/\D/g, '')
-  return digits || DEFAULT_CONTACT.whatsappNumber
-}
-
-export function sanitizeHttpUrl(
-  raw: string | null | undefined,
-  fallback: string,
-): string {
-  if (!raw) return fallback
-  try {
-    const url = new URL(raw)
-    if (url.protocol === 'http:' || url.protocol === 'https:') {
-      return url.toString()
-    }
-  } catch {
-    // fall through to fallback
-  }
-  return fallback
-}
-
-export function sanitizeEmail(raw: string | null | undefined): string {
-  const email = (raw ?? '').trim()
-  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return DEFAULT_CONTACT.supportEmail
-  }
-  return email
-}
-
 export function buildWhatsAppUrl(number: string, message: string) {
-  const safeNumber = sanitizeWhatsAppNumber(number)
-  return `https://wa.me/${safeNumber}?text=${encodeURIComponent(message)}`
+  const digits = number.replace(/\D/g, '') || DEFAULT_CONTACT.whatsappNumber
+  return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`
 }
 
-function fromSiteSettings(settings: {
-  whatsappNumber: string | null
-  telegramChannelUrl: string | null
-  instagramUrl: string | null
-  youtubeUrl: string | null
-  facebookUrl: string | null
-  supportEmail: string | null
-}): ContactSettings {
-  const whatsappNumber = sanitizeWhatsAppNumber(settings.whatsappNumber)
-  const whatsappDefaultMessage = DEFAULT_CONTACT.whatsappDefaultMessage
-  const whatsappExtendMessage = DEFAULT_CONTACT.whatsappExtendMessage
-
-  return {
-    whatsappNumber,
-    whatsappDefaultMessage,
-    whatsappExtendMessage,
-    whatsappUrl: buildWhatsAppUrl(whatsappNumber, whatsappDefaultMessage),
-    whatsappExtendUrl: buildWhatsAppUrl(whatsappNumber, whatsappExtendMessage),
-    telegramUrl: sanitizeHttpUrl(
-      settings.telegramChannelUrl,
-      DEFAULT_CONTACT.telegramUrl,
-    ),
-    instagramUrl: sanitizeHttpUrl(
-      settings.instagramUrl,
-      DEFAULT_CONTACT.instagramUrl,
-    ),
-    youtubeUrl: sanitizeHttpUrl(settings.youtubeUrl, DEFAULT_CONTACT.youtubeUrl),
-    facebookUrl: sanitizeHttpUrl(
-      settings.facebookUrl,
-      DEFAULT_CONTACT.facebookUrl,
-    ),
-    supportEmail: sanitizeEmail(settings.supportEmail),
-  }
-}
-
-export const getContactSettings = cache(async (): Promise<ContactSettings> => {
-  try {
-    const settings = await reader.singletons.siteSettings.read()
-    if (!settings) return DEFAULT_CONTACT
-    return fromSiteSettings(settings)
-  } catch {
-    return DEFAULT_CONTACT
-  }
-})
+export const getContactSettings = cache(
+  async (): Promise<ContactSettings> => DEFAULT_CONTACT,
+)
