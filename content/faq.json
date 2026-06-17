@@ -1,0 +1,128 @@
+[
+  {
+    "slug": "what-is-the-imd-subscription",
+    "question": "What is the iMD Subscription?",
+    "answer": "An iMD Subscription gives you full access to all premium medical resources, including premium question banks, clinical references, books, lectures, and many more, for your selected subscription period (6 months, 1 year, or 2 years).",
+    "category": "subscription",
+    "order": 1
+  },
+  {
+    "slug": "how-do-i-purchase-an-imd-subscription",
+    "question": "How do I purchase an iMD Subscription?",
+    "answer": "Getting an iMD subscription is simple.\n\nContact us through WhatsApp, Instagram, Email, or Telegram, and our team will guide you through the activation process.",
+    "category": "subscription",
+    "order": 2
+  },
+  {
+    "slug": "what-payment-methods-are-accepted",
+    "question": "What payment methods are accepted?",
+    "answer": "We accept international cards, local transfers in supported countries, and digital wallets. Contact us and tell us your country name and we'll provide you with a suitable payment method.",
+    "category": "subscription",
+    "order": 3
+  },
+  {
+    "slug": "can-i-extend-or-renew-my-imd-subscription",
+    "question": "Can I extend or renew my iMD Subscription?",
+    "answer": "Yes. You can renew anytime before or after your subscription expires — all your notes and bookmarks remain synced when you reactivate your account. Contact us now to extend your existing subscription via WhatsApp.",
+    "category": "subscription",
+    "order": 4
+  },
+  {
+    "slug": "does-the-imd-subscription-include-updates",
+    "question": "Does the iMD Subscription include updates?",
+    "answer": "Yes, all active subscribers automatically receive database and content updates without extra charges during their subscription period.",
+    "category": "subscription",
+    "order": 5
+  },
+  {
+    "slug": "how-do-i-transfer-my-subscription-to-another-device",
+    "question": "How do I transfer my subscription to another device?",
+    "answer": "Enter your Username/Password on the new device to login, but your data will not be transferred. Use the backup feature to copy your progress. Backup the data in previous device, install the same QBank or database on the new device, and manually restore the backup by entering a specific code or selecting a recent backup from the list to restore progress, highlights and favorites.",
+    "category": "subscription",
+    "order": 6
+  },
+  {
+    "slug": "is-there-a-free-trial-available",
+    "question": "Is there a free trial available?",
+    "answer": "We currently don't offer a free trial. You can ask anything by getting in touch via WhatsApp, Instagram, Telegram, or Email.",
+    "category": "subscription",
+    "order": 7
+  },
+  {
+    "slug": "what-happens-when-my-imd-subscription-expires",
+    "question": "What happens when my iMD Subscription expires?",
+    "answer": "Once expired, access pauses until renewal. Your account data remains saved for 30 days after expiration.",
+    "category": "subscription",
+    "order": 8
+  },
+  {
+    "slug": "can-i-share-my-imd-subscription-with-others",
+    "question": "Can I share my iMD Subscription with others?",
+    "answer": "No, sharing accounts violates our usage policy. Repeated violations may result in temporary or permanent bans.",
+    "category": "subscription",
+    "order": 9
+  },
+  {
+    "slug": "what-is-the-imd-app",
+    "question": "What is the iMD App?",
+    "answer": "The iMD App is an all-in-one digital platform providing premium medical databases, question banks, and textbooks for medical students and professionals. Made for exams like USMLE, AMC, PLAB, SMLE, etc.",
+    "category": "app",
+    "order": 10
+  },
+  {
+    "slug": "how-do-i-download-the-imd-app",
+    "question": "How do I download the iMD App?",
+    "answer": "Follow the steps on the installation page to install the app.",
+    "category": "app",
+    "order": 11
+  },
+  {
+    "slug": "on-which-devices-platforms-is-imd-app-available",
+    "question": "On which devices/platforms is iMD App Available?",
+    "answer": "iOS, MacOS, Windows, and Android. Check the installation instructions on the download page.",
+    "category": "app",
+    "order": 12
+  },
+  {
+    "slug": "can-i-use-the-imd-app-on-multiple-devices",
+    "question": "Can I use the iMD App on multiple devices?",
+    "answer": "Your subscription is linked to one primary device. Logging in elsewhere will log out the first device.",
+    "category": "app",
+    "order": 13
+  },
+  {
+    "slug": "how-much-space-does-the-imd-app-require",
+    "question": "How much space does the iMD App require?",
+    "answer": "The app is lightweight (<200 MB). Databases and textbooks can require 5–25 GB.",
+    "category": "app",
+    "order": 14
+  },
+  {
+    "slug": "what-content-is-available-inside-the-imd-app",
+    "question": "What content is available inside the iMD App?",
+    "answer": "Verified medical databases, question banks (QBanks), video lectures, and PDF textbooks covering all major subjects. Check Resources Page for full list.",
+    "category": "app",
+    "order": 15
+  },
+  {
+    "slug": "is-an-internet-connection-required-to-use-the-imd-app",
+    "question": "Is an internet connection required to use the iMD App?",
+    "answer": "Most features work offline. Internet is only needed for activation, syncing, and updates.",
+    "category": "app",
+    "order": 16
+  },
+  {
+    "slug": "how-often-is-the-imd-app-updated",
+    "question": "How often is the iMD App updated?",
+    "answer": "We release regular updates. Notifications appear inside the app when updates are available.",
+    "category": "app",
+    "order": 17
+  },
+  {
+    "slug": "im-facing-an-issue-with-the-app-what-should-i-do",
+    "question": "I'm facing an issue with the app — what should I do?",
+    "answer": "Contact the iMD Help team via WhatsApp, Instagram, Telegram, or Email. Include your OS, error message, and screenshot. We will reply asap.",
+    "category": "app",
+    "order": 18
+  }
+]

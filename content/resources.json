@@ -1,0 +1,73 @@
+{
+  "categories": [
+    {
+      "emoji": "💻",
+      "title": "Qbanks",
+      "more": true,
+      "items": [
+        "UWORLD Step 1, 2, 3 Qbanks",
+        "UWORLD Library, Flashcards, Self-Assessments",
+        "MEHLMAN QBanks",
+        "All NBME Self-Assessments",
+        "CMS Forms for USMLE",
+        "EMEDICI QBanks",
+        "AMEDEX QBanks",
+        "MPlusX Qbank",
+        "AMBOSS QBanks",
+        "USMLE-Rx Qbanks",
+        "PassMedicine Qbanks",
+        "CanadaQbank",
+        "AceQBank",
+        "BoardVitals Qbanks",
+        "BMJ OnExamination Qbanks",
+        "RADPrimer Lessons & Qbank",
+        "Prometric MCQ Qbanks",
+        "TrueLearn Qbanks"
+      ]
+    },
+    {
+      "emoji": "🏥",
+      "title": "Clinical Practice Resources",
+      "more": true,
+      "items": [
+        "UpToDate 2025",
+        "Epocrates",
+        "eTG Therapeutic Guidelines",
+        "Stanford Guide",
+        "VisualDx",
+        "RSNA Journals"
+      ]
+    },
+    {
+      "emoji": "💊",
+      "title": "Drug References",
+      "more": true,
+      "items": ["Lexicomp 2025", "Micromedex 2025"]
+    },
+    {
+      "emoji": "🎥",
+      "title": "Video Training & Lectures",
+      "more": true,
+      "items": [
+        "Boards and Beyond",
+        "Oakstone CME",
+        "Mayo Clinic",
+        "123Sonography",
+        "MHMedical",
+        "Radiopaedia",
+        "Doctors In Training",
+        "Pixorize",
+        "Dr. Najeeb",
+        "Kaplan",
+        "Lecturio",
+        "Osmosis",
+        "AccessMedicine"
+      ]
+    }
+  ],
+  "booksSection": {
+    "emoji": "📚",
+    "title": "Books & References",
+    "body": "More than **30,000 latest books** and references from **Elsevier, McGraw-Hill, Thieme, LWW, Oxford**, and many more publishers."
+  }
+}

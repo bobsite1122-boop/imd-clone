@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { getResources } from '@/lib/resources'
+import type { ResourceCategory } from '@/lib/resources'
 
 export const metadata: Metadata = {
   title: 'iMD App QBanks, Databases and Resources - iMD App PK',
@@ -7,85 +9,13 @@ export const metadata: Metadata = {
     '45,000+ premium medical resources including QBanks, clinical references, drug references, video lectures, and books — all in a single iMD App subscription.',
 }
 
+export const revalidate = 3600
+
 const COLORS = {
   hero: '#0e3b77',
   primary: '#020048',
   tertiary: '#ebebf8',
 }
-
-type Category = {
-  emoji: string
-  title: string
-  items: string[]
-  more?: boolean
-}
-
-const categories: Category[] = [
-  {
-    emoji: '💻',
-    title: 'Qbanks',
-    more: true,
-    items: [
-      'UWORLD Step 1, 2, 3 Qbanks',
-      'UWORLD Library, Flashcards, Self-Assessments',
-      'MEHLMAN QBanks',
-      'All NBME Self-Assessments',
-      'CMS Forms for USMLE',
-      'EMEDICI QBanks',
-      'AMEDEX QBanks',
-      'MPlusX Qbank',
-      'AMBOSS QBanks',
-      'USMLE-Rx Qbanks',
-      'PassMedicine Qbanks',
-      'CanadaQbank',
-      'AceQBank',
-      'BoardVitals Qbanks',
-      'BMJ OnExamination Qbanks',
-      'RADPrimer Lessons & Qbank',
-      'Prometric MCQ Qbanks',
-      'TrueLearn Qbanks',
-    ],
-  },
-  {
-    emoji: '🏥',
-    title: 'Clinical Practice Resources',
-    more: true,
-    items: [
-      'UpToDate 2025',
-      'Epocrates',
-      'eTG Therapeutic Guidelines',
-      'Stanford Guide',
-      'VisualDx',
-      'RSNA Journals',
-    ],
-  },
-  {
-    emoji: '💊',
-    title: 'Drug References',
-    more: true,
-    items: ['Lexicomp 2025', 'Micromedex 2025'],
-  },
-  {
-    emoji: '🎥',
-    title: 'Video Training & Lectures',
-    more: true,
-    items: [
-      'Boards and Beyond',
-      'Oakstone CME',
-      'Mayo Clinic',
-      '123Sonography',
-      'MHMedical',
-      'Radiopaedia',
-      'Doctors In Training',
-      'Pixorize',
-      'Dr. Najeeb',
-      'Kaplan',
-      'Lecturio',
-      'Osmosis',
-      'AccessMedicine',
-    ],
-  },
-]
 
 function CheckItem({ children }: { children: React.ReactNode }) {
   return (
@@ -101,7 +31,7 @@ function CheckItem({ children }: { children: React.ReactNode }) {
   )
 }
 
-function CategoryCard({ category }: { category: Category }) {
+function CategoryCard({ category }: { category: ResourceCategory }) {
   return (
     <article
       className="rounded-2xl p-6 md:p-8"
@@ -126,7 +56,27 @@ function CategoryCard({ category }: { category: Category }) {
   )
 }
 
-export default function DatabasesPage() {
+function BooksBody({ body }: { body: string }) {
+  const parts = body.split(/(\*\*[^*]+\*\*)/g).filter(Boolean)
+
+  return (
+    <p className="text-[14px] md:text-[15px] leading-7">
+      {parts.map((part, index) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return (
+            <strong key={index} className="font-semibold">
+              {part.slice(2, -2)}
+            </strong>
+          )
+        }
+        return <span key={index}>{part}</span>
+      })}
+    </p>
+  )
+}
+
+export default async function DatabasesPage() {
+  const { categories, booksSection } = await getResources()
   const [qbanks, clinical, drugs, videos] = categories
 
   return (
@@ -171,18 +121,10 @@ export default function DatabasesPage() {
             style={{ backgroundColor: COLORS.tertiary, color: COLORS.primary }}
           >
             <h2 className="font-display font-extrabold text-[20px] md:text-[22px] leading-snug flex items-center gap-2 mb-4">
-              <span aria-hidden="true">📚</span>
-              <span>Books &amp; References</span>
+              <span aria-hidden="true">{booksSection.emoji}</span>
+              <span>{booksSection.title}</span>
             </h2>
-            <p className="text-[14px] md:text-[15px] leading-7">
-              More than{' '}
-              <strong className="font-semibold">30,000 latest books</strong>{' '}
-              and references from{' '}
-              <strong className="font-semibold">
-                Elsevier, McGraw-Hill, Thieme, LWW, Oxford
-              </strong>
-              , and many more publishers.
-            </p>
+            <BooksBody body={booksSection.body} />
           </article>
         </div>
 

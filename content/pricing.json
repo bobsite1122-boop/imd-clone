@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "6-months-subscription",
+    "name": "6 Months Subscription",
+    "price": "$50",
+    "days": "180 Days",
+    "isPopular": false,
+    "features": [
+      "Full Access For 180 Days",
+      "International IP Use",
+      "Unlimited Access to All Databases",
+      "Unlock 45,000+ Premium Resources"
+    ]
+  },
+  {
+    "slug": "1-year-subscription",
+    "name": "1-Year Subscription",
+    "price": "$75",
+    "days": "365 Days",
+    "isPopular": false,
+    "features": [
+      "Full Access For 365 Days",
+      "International IP Use",
+      "Unlimited Access to All Databases",
+      "Unlock 45,000+ Premium Resources"
+    ]
+  },
+  {
+    "slug": "2-year-subscription",
+    "name": "2-Year Subscription",
+    "price": "$150",
+    "days": "730 Days",
+    "isPopular": false,
+    "features": [
+      "Full Access For 730 Days",
+      "International IP Use",
+      "Unlimited Access to All Databases",
+      "Unlock 45,000+ Premium Resources"
+    ]
+  }
+]

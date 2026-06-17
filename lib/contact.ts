@@ -25,7 +25,7 @@ const DEFAULT_CONTACT: ContactSettings = {
   instagramUrl: 'https://www.instagram.com/imd_app_pk',
   youtubeUrl: 'https://youtube.com/@imdapppk',
   facebookUrl: 'https://www.facebook.com/iMDAppPak',
-  supportEmail: 'support@imdresources.com',
+  supportEmail: 'support@imdapp.com.pk',
 }
 
 DEFAULT_CONTACT.whatsappUrl = buildWhatsAppUrl(
