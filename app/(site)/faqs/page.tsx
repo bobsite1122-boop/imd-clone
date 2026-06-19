@@ -1,14 +1,26 @@
-import type { Metadata } from 'next'
 import FAQAccordion, { type FAQItem } from '@/components/FAQAccordion'
+import JsonLd from '@/components/JsonLd'
+import SrOnlyBreadcrumb from '@/components/SrOnlyBreadcrumb'
 import { getContactSettings } from '@/lib/contact'
 import { mapFaqAnswer } from '@/lib/faq-answers'
 import { getAppFaqs, getFaqs, getSubscriptionFaqs } from '@/lib/faqs'
+import { breadcrumbSchema, faqPageSchema, webPageSchema } from '@/lib/seo/json-ld'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = {
-  title: 'FAQs - iMD App PK',
+export const metadata = buildPageMetadata({
+  title: 'iMD App Subscription FAQs',
   description:
-    'Find answers to common questions about iMD Subscription, the iMD App, payments, and more.',
-}
+    'Find answers to common questions about iMD App Subscription, payments, activation, USMLE resources, AMC QBank access, and the iMD App for medical students in Pakistan.',
+  path: '/faqs',
+  keywords: [
+    'iMD App Subscription FAQ',
+    'iMD App PK',
+    'Buy iMD App Subscription',
+    'Medical Subscription Pakistan',
+    'USMLE Resources',
+    'AMC QBank',
+  ],
+})
 
 export const revalidate = 3600
 
@@ -23,46 +35,77 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 export default async function FAQsPage() {
   const [faqs, contact] = await Promise.all([getFaqs(), getContactSettings()])
 
-  const subscriptionItems: FAQItem[] = getSubscriptionFaqs(faqs).map((faq) => ({
+  const subscriptionFaqs = getSubscriptionFaqs(faqs)
+  const appFaqs = getAppFaqs(faqs)
+
+  const subscriptionItems: FAQItem[] = subscriptionFaqs.map((faq) => ({
+    slug: faq.slug,
     question: faq.question,
     answer: mapFaqAnswer(faq.slug, faq.answer, contact),
   }))
 
-  const appItems: FAQItem[] = getAppFaqs(faqs).map((faq) => ({
+  const appItems: FAQItem[] = appFaqs.map((faq) => ({
+    slug: faq.slug,
     question: faq.question,
     answer: mapFaqAnswer(faq.slug, faq.answer, contact),
   }))
 
   const allItems = [...subscriptionItems, ...appItems]
 
+  const faqSchemaItems = faqs.map((faq) => ({
+    question: faq.question,
+    answer: faq.answer,
+  }))
+
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'FAQs', path: '/faqs' },
+  ]
+
   return (
-    <div className="bg-[#f3f6fb]">
-      <section className="bg-[#eaf2fb] py-10 sm:py-12 lg:py-14 text-center">
-        <div className="container-main">
-          <h1 className="font-display text-[26px] sm:text-[30px] lg:text-[32px] font-extrabold text-[#0e3b77]">
-            FAQs
-          </h1>
-        </div>
-      </section>
+    <>
+      <JsonLd
+        data={[
+          webPageSchema({
+            name: 'iMD App Subscription FAQs',
+            description:
+              'Find answers to common questions about iMD App Subscription, payments, and the iMD App.',
+            path: '/faqs',
+          }),
+          faqPageSchema(faqSchemaItems),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
+      <SrOnlyBreadcrumb items={breadcrumbs} />
 
-      <section className="pt-10 sm:pt-14 pb-2">
-        <div className="container-main text-center">
-          <h2 className="font-display text-[26px] sm:text-[30px] lg:text-[34px] font-extrabold text-[#0e3b77] leading-tight">
-            Frequently Asked Questions
-          </h2>
-          <p className="mt-3 sm:mt-4 text-slate-500 text-[13px] sm:text-sm max-w-[420px] mx-auto leading-relaxed">
-            Find answers to common questions about iMD Subscription, the iMD
-            App, payments, and more.
-          </p>
-        </div>
-      </section>
+      <div className="bg-[#f3f6fb]">
+        <section className="bg-[#eaf2fb] py-10 sm:py-12 lg:py-14 text-center">
+          <div className="container-main">
+            <h1 className="font-display text-[26px] sm:text-[30px] lg:text-[32px] font-extrabold text-[#0e3b77]">
+              FAQs
+            </h1>
+          </div>
+        </section>
 
-      <section className="pb-16 sm:pb-20">
-        <div className="mx-auto px-6 sm:px-8 max-w-[720px] lg:max-w-[540px] lg:px-4">
-          <SectionTitle>Subscription</SectionTitle>
-          <FAQAccordion items={allItems} startIndex={1} />
-        </div>
-      </section>
-    </div>
+        <section className="pt-10 sm:pt-14 pb-2">
+          <div className="container-main text-center">
+            <h2 className="font-display text-[26px] sm:text-[30px] lg:text-[34px] font-extrabold text-[#0e3b77] leading-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-3 sm:mt-4 text-slate-500 text-[13px] sm:text-sm max-w-[420px] mx-auto leading-relaxed">
+              Find answers to common questions about iMD Subscription, the iMD
+              App, payments, and more.
+            </p>
+          </div>
+        </section>
+
+        <section className="pb-16 sm:pb-20">
+          <div className="mx-auto px-6 sm:px-8 max-w-[720px] lg:max-w-[540px] lg:px-4">
+            <SectionTitle>Subscription</SectionTitle>
+            <FAQAccordion items={allItems} startIndex={1} />
+          </div>
+        </section>
+      </div>
+    </>
   )
 }

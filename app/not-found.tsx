@@ -1,4 +1,12 @@
 import Link from 'next/link'
+import { buildPageMetadata } from '@/lib/seo/metadata'
+
+export const metadata = buildPageMetadata({
+  title: 'Page Not Found',
+  description: 'The page you are looking for does not exist on iMD App PK.',
+  path: '/404',
+  noIndex: true,
+})
 
 export default function NotFound() {
   return (

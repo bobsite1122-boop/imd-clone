@@ -1,5 +1,16 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans, Sora } from 'next/font/google'
+import {
+  author,
+  longTailKeywords,
+  primaryKeywords,
+  siteDescription,
+  siteLanguage,
+  siteName,
+  siteShortDescription,
+  siteUrl,
+  themeColor,
+} from '@/lib/seo/site'
 import './globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -14,32 +25,41 @@ const sora = Sora({
   variable: '--font-display',
 })
 
-const siteTitle = 'iMD App PK | Medical Resources'
-const siteDescription =
-  "Pakistan's premier medical education subscription platform. Access 45,000+ medical resources."
-
 export const metadata: Metadata = {
-  title: siteTitle,
-  description: siteDescription,
-  keywords: [
-    'medical app',
-    'USMLE',
-    'medical subscription',
-    'Pakistan',
-    'medical resources',
-  ],
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Buy iMD App Subscription in Pakistan | iMD App PK',
+    template: '%s | iMD App PK',
+  },
+  description: siteShortDescription,
+  keywords: [...primaryKeywords, ...longTailKeywords],
+  authors: [{ name: author }],
+  creator: author,
+  publisher: siteName,
+  category: 'Medical Education',
   openGraph: {
-    title: siteTitle,
+    title: 'Buy iMD App Subscription in Pakistan | iMD App PK',
     description: siteDescription,
     type: 'website',
     locale: 'en_PK',
-    siteName: 'iMD App PK',
+    siteName,
+    url: siteUrl,
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteTitle,
-    description: siteDescription,
+    title: 'Buy iMD App Subscription in Pakistan | iMD App PK',
+    description: siteShortDescription,
   },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor,
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -48,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} ${sora.variable}`}>
+    <html lang={siteLanguage} className={`${plusJakartaSans.variable} ${sora.variable}`}>
       <body className="min-h-full flex flex-col antialiased bg-white text-slate-900 font-sans">
         {children}
       </body>

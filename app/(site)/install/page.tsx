@@ -2,11 +2,16 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { type ReactNode } from 'react'
 import { Download, PlayCircle, ExternalLink, Smartphone, Monitor, Apple } from 'lucide-react'
+import JsonLd from '@/components/JsonLd'
+import SrOnlyBreadcrumb from '@/components/SrOnlyBreadcrumb'
+import { breadcrumbSchema, webPageSchema } from '@/lib/seo/json-ld'
+import { buildPageMetadata } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = {
-  title: 'Download & Install iMD App - iMD App PK',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Download & Install iMD App',
   description:
     'Step-by-step instructions to download and install the iMD App on Android, Windows, iPhone, iPad and macOS. Get the APK, video tutorials and activation portal.',
+  path: '/install',
   keywords: [
     'iMD App download',
     'iMD App install',
@@ -16,8 +21,9 @@ export const metadata: Metadata = {
     'iMD App iPhone',
     'iMD App iPad',
     'iMD App macOS',
+    'Medical Study App',
   ],
-}
+})
 
 const APK_URL = 'https://sg.imedicaldoctor.net/imd195.apk'
 const WINDOWS_VIDEO_URL = 'https://youtu.be/_KPIHa9bCF4?si=K1iLE1EeQOKa6TnI'
@@ -461,7 +467,26 @@ function AppleCard() {
 }
 
 export default function InstallPage() {
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Download & Install', path: '/install' },
+  ]
+
   return (
+    <>
+      <JsonLd
+        data={[
+          webPageSchema({
+            name: 'Download & Install iMD App',
+            description:
+              'Step-by-step instructions to download and install the iMD App on Android, Windows, iPhone, iPad and macOS.',
+            path: '/install',
+          }),
+          breadcrumbSchema(breadcrumbs),
+        ]}
+      />
+      <SrOnlyBreadcrumb items={breadcrumbs} />
+
     <div className="bg-[#eaf2fb] min-h-[60vh]">
       <section className="pt-10 sm:pt-14 lg:pt-16 pb-6 sm:pb-8 text-center">
         <div className="container-main">
@@ -498,5 +523,6 @@ export default function InstallPage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

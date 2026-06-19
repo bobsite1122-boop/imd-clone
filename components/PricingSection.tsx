@@ -1,7 +1,5 @@
-import { Check } from 'lucide-react'
 import { getPlans } from '@/lib/plans'
-
-const NAVY = '#0d1b3e'
+import PlanCard from '@/components/PlanCard'
 
 export default async function PricingSection() {
   const plans = await getPlans()
@@ -27,67 +25,7 @@ export default async function PricingSection() {
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {plans.map((plan) => (
-            <article
-              key={plan.slug}
-              className="bg-white border border-gray-200 rounded-sm p-5 flex flex-col w-full max-w-sm mx-auto md:max-w-none"
-            >
-              {/* Plan name */}
-              <h3
-                className="text-xs md:text-sm font-semibold text-center mb-2 tracking-wide"
-                style={{ color: NAVY }}
-              >
-                {plan.name}
-              </h3>
-
-              {/* Price */}
-              <p
-                className="text-center font-display font-black text-[2.8rem] sm:text-[3.2rem] md:text-[3.5rem] leading-none mb-5"
-                style={{ color: NAVY }}
-              >
-                {plan.price}
-              </p>
-
-              {/* Features */}
-              <ul className="mb-6 flex-1">
-                {plan.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-center gap-2 py-2 text-[12.5px] text-gray-700 border-b border-gray-100 last:border-b-0"
-                  >
-                    <Check
-                      size={14}
-                      strokeWidth={3}
-                      className="shrink-0"
-                      style={{ color: NAVY }}
-                      aria-hidden="true"
-                    />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Buttons */}
-              <div className="flex flex-col gap-2.5 mt-auto">
-                <a
-                  href={plan.subscribeWhatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
-                  style={{ backgroundColor: NAVY }}
-                >
-                  Subscribe Now
-                </a>
-                <a
-                  href={plan.extendWhatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white font-bold py-3 rounded text-center text-xs uppercase tracking-widest hover:opacity-90 transition min-h-[44px] flex items-center justify-center"
-                  style={{ backgroundColor: NAVY }}
-                >
-                  Extend Now
-                </a>
-              </div>
-            </article>
+            <PlanCard key={plan.slug} plan={plan} linkTitle />
           ))}
         </div>
       </div>

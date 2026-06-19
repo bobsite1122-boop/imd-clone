@@ -11,6 +11,9 @@ export type FaqEntry = {
   order: number
 }
 
+const linkButtonClass =
+  'mt-3 inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 rounded-md bg-[#0e3b77] hover:bg-[#0a2d5e] text-white text-[13px] sm:text-[14px] font-semibold transition-colors'
+
 function formatPlainAnswer(answer: string): ReactNode {
   const paragraphs = answer.split(/\n\s*\n/).filter(Boolean)
   if (paragraphs.length <= 1) return answer
@@ -28,10 +31,7 @@ export function mapFaqAnswer(
     return (
       <>
         <p>{answer}</p>
-        <Link
-          href="/databases"
-          className="mt-3 inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 rounded-md bg-[#0e3b77] hover:bg-[#0a2d5e] text-white text-[13px] sm:text-[14px] font-semibold transition-colors"
-        >
+        <Link href="/databases" className={linkButtonClass}>
           View Resources
         </Link>
       </>
@@ -45,6 +45,42 @@ export function mapFaqAnswer(
         <p className="font-semibold text-slate-700">{paragraphs[0]}</p>
         {paragraphs[1] ? <p>{paragraphs[1]}</p> : null}
         <FAQContactLinks contact={contact} />
+        <Link href="/#subscribenow" className={linkButtonClass}>
+          View Subscription Plans
+        </Link>
+      </>
+    )
+  }
+
+  if (slug === 'how-do-i-download-the-imd-app') {
+    return (
+      <>
+        <p>{answer}</p>
+        <Link href="/install" className={linkButtonClass}>
+          Installation Page
+        </Link>
+      </>
+    )
+  }
+
+  if (slug === 'on-which-devices-platforms-is-imd-app-available') {
+    return (
+      <>
+        <p>{answer}</p>
+        <Link href="/install" className={linkButtonClass}>
+          Download Page
+        </Link>
+      </>
+    )
+  }
+
+  if (slug === 'what-content-is-available-inside-the-imd-app') {
+    return (
+      <>
+        <p>{answer}</p>
+        <Link href="/databases" className={linkButtonClass}>
+          Resources Page
+        </Link>
       </>
     )
   }
