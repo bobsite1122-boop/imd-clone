@@ -99,6 +99,7 @@ export function productOfferSchema(plan: Plan, description: string): JsonLdObjec
     '@type': 'Product',
     name: plan.name,
     description,
+    image: absoluteUrl(`/${plan.slug}.png`),
     brand: {
       '@type': 'Brand',
       name: siteAlternateName,
