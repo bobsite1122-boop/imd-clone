@@ -53,7 +53,7 @@ export default async function Hero() {
     <div className="h-8 w-px bg-white/20" />
 
     <span className="font-display text-[20px] font-bold tracking-normal text-white">
-      iMD APP
+      iMD App
     </span>
 
   </div>
