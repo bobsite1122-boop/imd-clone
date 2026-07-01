@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getContactSettings } from '@/lib/contact'
 
 function WhatsAppGlyph({ size = 18 }: { size?: number }) {
@@ -37,16 +38,29 @@ export default async function Hero() {
       <div className="container-main relative">
         <div className="max-w-[760px] mx-auto pt-10 pb-12 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24 text-center">
 
-          {/* Eyebrow — brand pill */}
-          <div className="flex justify-center">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-white/35 bg-white/15 backdrop-blur-sm px-5 sm:px-6 py-2.5 sm:py-3 font-display text-[16px] sm:text-[18px] md:text-[19px] lg:text-[20px] font-extrabold tracking-[0.1em] text-white shadow-[0_2px_12px_rgba(0,0,0,0.22)]">
-              <span aria-hidden="true" className="h-2 w-2 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.6)]" />
-              iMD APP
-            </span>
-          </div>
+ {/* Premium Brand Badge */}
+<div className="flex justify-center">
+  <div className="inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-7 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
+
+    <Image
+      src="/logo.png"
+      alt="iMD App"
+      width={36}
+      height={36}
+      className="rounded-full"
+    />
+
+    <div className="h-8 w-px bg-white/20" />
+
+    <span className="font-display text-[20px] font-bold tracking-normal text-white">
+      iMD APP
+    </span>
+
+  </div>
+</div>
 
           {/* Headline */}
-          <h1 className="mt-4 sm:mt-5 font-display font-extrabold text-white leading-[1.12] tracking-tight text-[28px] sm:text-[34px] md:text-[42px] lg:text-[50px]">
+          <h1 className="mt-6 sm:mt-5 font-display font-extrabold text-white leading-[1.12] tracking-tight text-[28px] sm:text-[34px] md:text-[42px] lg:text-[50px]">
             An Economical and Resourceful Alternative to UWorld &amp; Many
             Other Expensive Qbanks.
           </h1>
