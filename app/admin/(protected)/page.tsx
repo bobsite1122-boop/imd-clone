@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CreditCard, HelpCircle, Database, Bot } from 'lucide-react'
+import { CreditCard, Download, HelpCircle, Database, Bot } from 'lucide-react'
 import SeedButton from '@/components/admin/SeedButton'
 
 const cards = [
@@ -8,6 +8,12 @@ const cards = [
     title: 'Pricing Plans',
     description: 'Edit subscription plans on the home page',
     icon: CreditCard,
+  },
+  {
+    href: '/admin/install',
+    title: 'Install',
+    description: 'Edit the APK download URL on the install page',
+    icon: Download,
   },
   {
     href: '/admin/faqs',

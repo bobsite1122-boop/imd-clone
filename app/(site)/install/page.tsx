@@ -6,6 +6,7 @@ import JsonLd from '@/components/JsonLd'
 import SrOnlyBreadcrumb from '@/components/SrOnlyBreadcrumb'
 import { breadcrumbSchema, webPageSchema } from '@/lib/seo/json-ld'
 import { buildPageMetadata } from '@/lib/seo/metadata'
+import { getInstallSettings } from '@/lib/install'
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Download & Install iMD App',
@@ -25,7 +26,8 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 })
 
-const APK_URL = 'https://sg.imedicaldoctor.net/imd195.apk'
+export const revalidate = 3600
+
 const WINDOWS_VIDEO_URL = 'https://youtu.be/_KPIHa9bCF4?si=K1iLE1EeQOKa6TnI'
 const WINDOWS_VIDEO_ID = '_KPIHa9bCF4'
 const APPLE_VIDEO_URL =
@@ -183,7 +185,7 @@ function PlatformCard({
   )
 }
 
-function AndroidCard() {
+function AndroidCard({ downloadApkUrl }: { downloadApkUrl: string }) {
   return (
     <PlatformCard
       id="android"
@@ -199,7 +201,7 @@ function AndroidCard() {
           </p>
           <div className="pt-1">
             <PrimaryButton
-              href={APK_URL}
+              href={downloadApkUrl}
               icon={<Download size={18} aria-hidden="true" />}
             >
               Download APK
@@ -245,7 +247,7 @@ function AndroidCard() {
   )
 }
 
-function WindowsCard() {
+function WindowsCard({ downloadApkUrl }: { downloadApkUrl: string }) {
   return (
     <PlatformCard
       id="windows"
@@ -306,7 +308,7 @@ function WindowsCard() {
           <p>Grab the latest APK file for the iMD App.</p>
           <div className="pt-1">
             <PrimaryButton
-              href={APK_URL}
+              href={downloadApkUrl}
               icon={<Download size={18} aria-hidden="true" />}
             >
               Download APK
@@ -466,7 +468,9 @@ function AppleCard() {
   )
 }
 
-export default function InstallPage() {
+export default async function InstallPage() {
+  const { downloadApkUrl } = await getInstallSettings()
+
   const breadcrumbs = [
     { name: 'Home', path: '/' },
     { name: 'Download & Install', path: '/install' },
@@ -517,8 +521,8 @@ export default function InstallPage() {
 
       <section className="pb-16 sm:pb-20">
         <div className="mx-auto px-4 sm:px-6 max-w-[720px] flex flex-col gap-6 sm:gap-8">
-          <AndroidCard />
-          <WindowsCard />
+          <AndroidCard downloadApkUrl={downloadApkUrl} />
+          <WindowsCard downloadApkUrl={downloadApkUrl} />
           <AppleCard />
         </div>
       </section>

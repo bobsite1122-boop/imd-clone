@@ -7,6 +7,7 @@ import {
   type CmsContentId,
   cmsContentIdSchema,
   faqSchema,
+  installSchema,
   pricingSchema,
   resourcesSchema,
   safeValidateCmsContent,
@@ -25,12 +26,14 @@ const schemaMap = {
   pricing: pricingSchema,
   faq: faqSchema,
   resources: resourcesSchema,
+  install: installSchema,
 } as const
 
 const revalidateMap: Record<CmsContentId, string> = {
   pricing: '/',
   faq: '/faqs',
   resources: '/databases',
+  install: '/install',
 }
 
 export async function POST(request: Request) {

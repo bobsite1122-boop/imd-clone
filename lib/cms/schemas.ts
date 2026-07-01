@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const cmsContentIdSchema = z.enum(['pricing', 'faq', 'resources'])
+export const cmsContentIdSchema = z.enum(['pricing', 'faq', 'resources', 'install'])
 export type CmsContentId = z.infer<typeof cmsContentIdSchema>
 
 export const planSchema = z.object({
@@ -58,6 +58,12 @@ export type ResourceCategoryContent = z.infer<typeof resourceCategorySchema>
 export type BooksSectionContent = z.infer<typeof booksSectionSchema>
 export type ResourcesContent = z.infer<typeof resourcesSchema>
 
+export const installSchema = z.object({
+  downloadApkUrl: z.string().url(),
+})
+
+export type InstallContent = z.infer<typeof installSchema>
+
 export const SPECIAL_FAQ_SLUGS = [
   'what-is-the-imd-subscription',
   'how-do-i-purchase-an-imd-subscription',
@@ -67,6 +73,7 @@ const schemaMap = {
   pricing: pricingSchema,
   faq: faqSchema,
   resources: resourcesSchema,
+  install: installSchema,
 } as const
 
 export function validateCmsContent<T extends CmsContentId>(

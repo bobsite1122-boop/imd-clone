@@ -2,6 +2,7 @@ import 'server-only'
 import pricingSeed from '@/content/pricing.json'
 import faqSeed from '@/content/faq.json'
 import resourcesSeed from '@/content/resources.json'
+import installSeed from '@/content/install.json'
 import {
   type CmsContentId,
   validateCmsContent,
@@ -12,6 +13,7 @@ const seedMap = {
   pricing: pricingSeed,
   faq: faqSeed,
   resources: resourcesSeed,
+  install: installSeed,
 } as const
 
 export async function writeCmsContent<T extends CmsContentId>(
@@ -56,7 +58,7 @@ export async function seedCmsContentIfEmpty(): Promise<{ seeded: CmsContentId[] 
   }
 
   const seeded: CmsContentId[] = []
-  const ids: CmsContentId[] = ['pricing', 'faq', 'resources']
+  const ids: CmsContentId[] = ['pricing', 'faq', 'resources', 'install']
 
   for (const id of ids) {
     const { data: existing } = await supabase

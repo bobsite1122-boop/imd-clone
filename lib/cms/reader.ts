@@ -1,9 +1,11 @@
 import pricingFallback from '@/content/pricing.json'
 import faqFallback from '@/content/faq.json'
 import resourcesFallback from '@/content/resources.json'
+import installFallback from '@/content/install.json'
 import {
   type CmsContentId,
   type FaqContent,
+  type InstallContent,
   type PricingContent,
   type ResourcesContent,
   validateCmsContent,
@@ -14,6 +16,7 @@ const fallbackMap = {
   pricing: pricingFallback,
   faq: faqFallback,
   resources: resourcesFallback,
+  install: installFallback,
 } as const
 
 function getFallback<T extends CmsContentId>(id: T): ReturnType<typeof validateCmsContent<T>> {
@@ -59,4 +62,8 @@ export async function getFaqContent(): Promise<FaqContent> {
 
 export async function getResourcesContent(): Promise<ResourcesContent> {
   return getCmsContent('resources')
+}
+
+export async function getInstallContent(): Promise<InstallContent> {
+  return getCmsContent('install')
 }
