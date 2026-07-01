@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 import { Plus_Jakarta_Sans, Sora } from 'next/font/google'
 import {
   author,
@@ -69,9 +70,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={siteLanguage} className={`${plusJakartaSans.variable} ${sora.variable}`}>
-      <body className="min-h-full flex flex-col antialiased bg-white text-slate-900 font-sans">
-        {children}
-      </body>
+   <body className="min-h-full flex flex-col antialiased bg-white text-slate-900 font-sans">
+  {children}
+
+  <Script
+    src="https://www.googletagmanager.com/gtag/js?id=G-Q8R69NL811"
+    strategy="afterInteractive"
+  />
+
+  <Script id="google-analytics" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q8R69NL811');
+    `}
+  </Script>
+</body>
     </html>
   )
 }
