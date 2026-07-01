@@ -6,6 +6,7 @@ import { signOut } from 'next-auth/react'
 import {
   Bot,
   CreditCard,
+  Download,
   HelpCircle,
   LayoutDashboard,
   LogOut,
@@ -15,6 +16,7 @@ import {
 const navItems = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
   { href: '/admin/pricing', label: 'Pricing', icon: CreditCard },
+  { href: '/admin/install', label: 'Install', icon: Download },
   { href: '/admin/faqs', label: 'FAQ', icon: HelpCircle },
   { href: '/admin/resources', label: 'Resources', icon: Database },
   { href: '/admin/ai', label: 'AI Assistant', icon: Bot },

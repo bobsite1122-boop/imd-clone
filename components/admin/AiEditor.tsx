@@ -8,6 +8,7 @@ const contentTypes: { value: CmsContentId; label: string }[] = [
   { value: 'pricing', label: 'Pricing Plans' },
   { value: 'faq', label: 'FAQ' },
   { value: 'resources', label: 'Resources' },
+  { value: 'install', label: 'Install Settings' },
 ]
 
 export default function AiEditor() {
@@ -55,6 +56,7 @@ export default function AiEditor() {
       pricing: '/api/update-pricing',
       faq: '/api/update-faq',
       resources: '/api/update-resources',
+      install: '/api/update-install',
     }
 
     const result = await saveCmsData(endpoints[contentType], preview)
